@@ -1,0 +1,2479 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>CREATOR MONEY SYSTEM - Complete 10 Chapters (Tuan Bay)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600;800&family=Montserrat:wght@400;600;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- RESET & GLOBAL VARIABLES --- */
+        :root {
+            --primary: #00A859; /* Wealth Green */
+            --primary-dark: #007E43;
+            --primary-light: #E8F6EF;
+            --secondary: #FF9900; /* Gold/Orange for accents */
+            --accent: #2E5BFF; /* Blue for highlights */
+            --dark: #0a2918; /* Dark green-based */
+            --gray: #1E3A29;
+            --light-gray: #F5F9F7;
+            --white: #FFFFFF;
+            --font-title: 'Anton', sans-serif;
+            --font-head: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            color: #333;
+            background: #ddd;
+        }
+
+        /* --- PAGE CONFIGURATION FOR PDF --- */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+            margin-bottom: 0.5cm;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            page-break-after: always;
+        }
+
+        /* --- TYPOGRAPHY UTILS --- */
+        h1, h2, h3, h4 { margin: 0; }
+        p { line-height: 1.6; margin-bottom: 1rem; font-size: 11pt; }
+        
+        .text-green { color: var(--primary); }
+        .text-gold { color: var(--secondary); }
+        .text-center { text-align: center; }
+        .text-bold { font-weight: 800; }
+        
+        /* --- LAYOUT COMPONENTS --- */
+        .content-area {
+            padding: 2.5cm;
+            height: 100%;
+            position: relative;
+        }
+
+        .header-strip {
+            position: absolute;
+            top: 1cm;
+            left: 2.5cm;
+            right: 2.5cm;
+            font-family: var(--font-head);
+            font-size: 9pt;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .footer-strip {
+            position: absolute;
+            bottom: 1cm;
+            left: 2.5cm;
+            right: 2.5cm;
+            font-family: var(--font-head);
+            font-size: 9pt;
+            color: #888;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* --- COVER PAGE --- */
+        .cover-page {
+            background: linear-gradient(135deg, #003d1e 0%, #006b36 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: 15px solid var(--primary);
+        }
+
+        .cover-top {
+            font-family: var(--font-head);
+            font-size: 14pt;
+            color: #c8f0d9;
+            letter-spacing: 4px;
+            margin-bottom: 2cm;
+            font-weight: 600;
+        }
+
+        .cover-title {
+            font-family: var(--font-title);
+            font-size: 65pt;
+            line-height: 0.9;
+            color: var(--white);
+            text-transform: uppercase;
+            margin-bottom: 0.5cm;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .cover-subtitle {
+            font-family: var(--font-head);
+            font-weight: 300;
+            font-size: 16pt;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding: 20px 0;
+            width: 80%;
+            margin-bottom: 4cm;
+            color: #e0ffe8;
+        }
+
+        .cover-author {
+            font-size: 12pt;
+            color: #b5ffd0;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        /* --- TOC --- */
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1cm;
+        }
+        .toc-section {
+            font-family: var(--font-head);
+            font-weight: 800;
+            color: var(--primary);
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 10pt;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .toc-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 10pt;
+            font-weight: 600;
+        }
+        .toc-item span:first-child {
+            background: white;
+            padding-right: 5px;
+            z-index: 2;
+        }
+        .toc-line {
+            flex-grow: 1;
+            border-bottom: 2px dotted #ccc;
+            margin: 0 5px;
+            position: relative;
+            top: -5px;
+            z-index: 1;
+        }
+
+        /* --- CHAPTER HEADER STYLE --- */
+        .chapter-start {
+            margin-top: 1cm;
+            position: relative;
+            margin-bottom: 1.5cm;
+        }
+        .chapter-num {
+            position: absolute;
+            top: -50px;
+            left: -10px;
+            font-family: var(--font-title);
+            font-size: 100pt;
+            color: rgba(0, 168, 89, 0.05);
+            z-index: 0;
+            line-height: 1;
+        }
+        .chapter-pre {
+            font-family: var(--font-head);
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 12pt;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+        }
+        .chapter-main-title {
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: 28pt;
+            line-height: 1.1;
+            margin: 10px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .chapter-sub {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 12pt;
+            color: #666;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- CONTENT BOXES --- */
+        .box-warning {
+            background: var(--primary-light);
+            border: 2px solid var(--primary);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 10pt;
+        }
+        .box-warning strong { color: var(--primary); text-transform: uppercase; }
+
+        .box-formula {
+            background: var(--dark);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-family: var(--font-head);
+        }
+        .box-formula h4 { color: #b5ffd0; margin-bottom: 10px; letter-spacing: 1px; }
+
+        .box-success {
+            background: #f0f9f5;
+            border: 2px solid var(--primary);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 10pt;
+        }
+
+        .checklist-box {
+            background: #f8f9fa;
+            border-left: 5px solid var(--secondary);
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            font-size: 10pt;
+        }
+        .checklist-item i {
+            color: var(--secondary);
+            margin-right: 10px;
+            font-size: 12pt;
+            margin-top: 2px;
+        }
+
+        /* --- TABLES --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 10pt;
+        }
+        th {
+            background: var(--primary-dark);
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .table-income {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .table-income th {
+            background: var(--primary);
+            color: white;
+            padding: 12px;
+            font-weight: 600;
+        }
+        .table-income td {
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+        }
+        .table-income tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        /* --- BONUS PAGES (DARK MODE) --- */
+        .page-dark {
+            background: var(--gray);
+            color: #eee;
+        }
+        .page-dark .header-strip { border-bottom-color: #444; color: #666; }
+        .page-dark .footer-strip { color: #666; }
+        .page-dark h2 { color: var(--white); border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+        .page-dark .box-warning { background: #002612; border-color: var(--primary); color: #fff; }
+        .page-dark table th { background: #2a3b31; }
+        .page-dark table td { border-color: #3a4d41; }
+
+        /* Helpers */
+        .mt-4 { margin-top: 1.5rem; }
+        .mb-4 { margin-bottom: 1.5rem; }
+        .drop-cap::first-letter {
+            float: left;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            font-weight: bold;
+            color: var(--primary);
+            padding-right: 10px;
+            font-family: var(--font-title);
+        }
+        .highlight { background: #ffffcc; padding: 0 5px; }
+        .money-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 9pt;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 10px;
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        /* Income Level Cards */
+        .income-card {
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .income-card h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        /* Money Icon Styling */
+        .money-icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--secondary);
+            border-radius: 50%;
+        }
+
+        @media print {
+            body { background: none; }
+            .page { margin: 0; box-shadow: none; page-break-after: always; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HALAMAN COVER ==================== -->
+    <div class="page cover-page">
+        <div class="cover-top">
+            <i class="fas fa-money-bill-wave"></i> EDISI PRO 2026
+        </div>
+        <div class="cover-title">
+            CREATOR<br><span style="color: #b5ffd0;">MONEY</span><br>SYSTEM
+        </div>
+        <div class="cover-subtitle">
+            Panduan Lengkap Mengelola Uang dari 1 Juta sampai Puluhan Juta<br>
+            <strong>Sistem yang Tumbuh Bersama Karir Kreatormu</strong>
+        </div>
+        <div class="cover-author">
+            <p style="font-size: 10pt; color: #88d4a8; font-weight: normal; margin-bottom: 5px;">DITULIS OLEH:</p>
+            TUAN BAY
+            <p style="font-size: 9pt; color: #77c497; margin-top: 5px; font-weight: normal;">Praktisi Keuangan Digital untuk Kreator</p>
+        </div>
+    </div>
+
+    <!-- ==================== PENGANTAR PENULIS ==================== -->
+    <div class="page">
+        <div class="header-strip">Pengantar Penulis</div>
+        <div class="content-area">
+            <h2 style="font-family: var(--font-serif); font-style: italic; margin-bottom: 30px;">Dari Penulis untuk Kreator</h2>
+            
+            <p class="drop-cap">Jika kamu membaca buku ini, kemungkinan besar kamu adalah seorang kreator — atau ingin menjadi kreator — yang sudah lelah dengan ketidakpastian finansial.</p>
+            
+            <p>Saya menulis buku ini bukan karena saya ahli teori keuangan, tapi karena saya telah melihat terlalu banyak kreator berbakat "jatuh" bukan karena kurang skill, tapi karena tidak punya sistem mengelola penghasilan yang mereka dapatkan dengan susah payah.</p>
+            
+            <p>Dalam 5 tahun terakhir, saya telah membantu puluhan kreator dengan income beragam — dari yang baru dapat Adsense pertama 500 ribu, sampai yang sudah mencapai puluhan juta per bulan — untuk membangun sistem keuangan yang membuat mereka bisa <strong>berkarya dengan tenang</strong>.</p>
+
+            <div class="box-warning" style="margin-top: 2cm;">
+                <strong>📢 INI BUKAN BUKU BIASA:</strong><br>
+                • Tidak ada janji kaya instant<br>
+                • Tidak ada teori finansial rumit<br>
+                • Yang ada adalah sistem praktis yang sudah terbukti<br>
+                • Bisa diterapkan mulai besok pagi
+            </div>
+
+            <p style="margin-top: 2cm;">Buku ini adalah kumpulan pembelajaran, trial and error, dan formula yang berhasil untuk kreator Indonesia. Ambil yang cocok, adaptasi yang perlu, dan buat sistemmu sendiri.</p>
+
+            <div style="margin-top: 2cm; border-left: 4px solid var(--primary); padding-left: 20px;">
+                <p style="font-family: var(--font-serif); font-size: 14pt; font-style: italic;">"Uang kreator yang tidak dikelola adalah uang yang akan mengelola kreator itu sendiri — biasanya ke arah yang tidak diinginkan."</p>
+            </div>
+            <div style="margin-top: 0,5cm; text-align: right; font-weight: bold;">
+                — Tuan Bay<br>
+                <span style="font-size: 10pt; font-weight: normal;">Januari 2026</span>
+            </div>
+        </div>
+        <div class="footer-strip">ii</div>
+    </div>
+
+    <!-- ==================== DAFTAR ISI LENGKAP ==================== -->
+    <div class="page">
+        <div class="header-strip">Daftar Isi Lengkap</div>
+        <div class="content-area">
+            <h1 style="font-family: var(--font-head); font-size: 24pt; border-bottom: 4px solid var(--primary); display: inline-block; padding-bottom: 10px;">DAFTAR ISI</h1>
+
+            <ul class="toc-list">
+                <div class="toc-section">BAGIAN 1: REALITA UANG KREATOR</div>
+                <li class="toc-item"><span>Bab 1: Kenapa Penghasilan Naik Tapi Hidup Tetap Berat</span><div class="toc-line"></div><span>1</span></li>
+                <li class="toc-item"><span>Bab 2: Karakter Uang Kreator yang Berbeda</span><div class="toc-line"></div><span>4</span></li>
+
+                <div class="toc-section">BAGIAN 2: SISTEM DASAR KEUANGAN</div>
+                <li class="toc-item"><span>Bab 3: Sistem Pos Keuangan Fleksibel</span><div class="toc-line"></div><span>7</span></li>
+                <li class="toc-item"><span>Bab 4: Sistem Gaji Kreator (Wajib Diterapkan)</span><div class="toc-line"></div><span>10</span></li>
+
+                <div class="toc-section">BAGIAN 3: MENGELOLA SUMBER INCOME</div>
+                <li class="toc-item"><span>Bab 5: Mengelola Adsense dengan Aman</span><div class="toc-line"></div><span>13</span></li>
+                <li class="toc-item"><span>Bab 6: Brand Deal & Affiliate Tanpa Bocor</span><div class="toc-line"></div><span>16</span></li>
+
+                <div class="toc-section">BAGIAN 4: BANGUN BENTENG KEUANGAN</div>
+                <li class="toc-item"><span>Bab 7: Dana Darurat Versi Kreator</span><div class="toc-line"></div><span>19</span></li>
+                <li class="toc-item"><span>Bab 8: Investasi yang Masuk Akal untuk Kreator</span><div class="toc-line"></div><span>22</span></li>
+
+                <div class="toc-section">BAGIAN 5: NAIK LEVEL TANPA BANGKRUT</div>
+                <li class="toc-item"><span>Bab 9: Naik Income Tanpa Naik Gaya Hidup</span><div class="toc-line"></div><span>25</span></li>
+                <li class="toc-item"><span>Bab 10: YouTube sebagai Aset Jangka Panjang</span><div class="toc-line"></div><span>28</span></li>
+
+                <div class="toc-section">BONUS EKSKLUSIF & ACTION PLAN</div>
+                <li class="toc-item"><span>Template & Checklist Praktis</span><div class="toc-line"></div><span>31</span></li>
+                <li class="toc-item"><span>Simulasi & 30-Day Action Plan</span><div class="toc-line"></div><span>34</span></li>
+                <li class="toc-item"><span>Penutup & Sumber Daya</span><div class="toc-line"></div><span>37</span></li>
+            </ul>
+        </div>
+        <div class="footer-strip">iii</div>
+    </div>
+
+    <!-- ==================== BAGIAN 1: REALITA UANG KREATOR ==================== -->
+
+    <!-- BAB 1 - HALAMAN 1 -->
+    <div class="page">
+        <div class="header-strip">Bagian 1: Realita Uang Kreator</div>
+        <div class="content-area">
+            <div class="chapter-start">
+                <div class="chapter-num">01</div>
+                <div class="chapter-pre">BAB SATU</div>
+                <h1 class="chapter-main-title">KENAPA PENGHASILAN NAIK<br> TAPI HIDUP TETAP BERAT?</h1>
+                <div class="chapter-sub">Mengidentifikasi Kebocoran yang Tidak Kamu Sadari</div>
+            </div>
+
+            <p class="drop-cap">Jika kamu pernah merasa "income naik tapi kok hidup tetap susah?", kamu tidak sendirian. Ini adalah masalah paling umum yang dialami 90% kreator.</p>
+
+            <h3 class="text-green mt-4">POLA UMUM YANG TERJADI:</h3>
+            
+            <div class="income-card">
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <div class="money-icon">1</div>
+                    <h4 style="margin: 0; color: var(--primary);">LEVEL PEMULA (1-3 JUTA/BULAN)</h4>
+                </div>
+                <p><strong>Gejala:</strong> Uang selalu habis tepat tanggal, merasa "gak pernah cukup" padahal baru dapat income pertama dari konten.</p>
+                <p><strong>Penyebab Utama:</strong> Menganggap semua uang adalah "uang pribadi" untuk langsung dinikmati, tanpa memisahkan untuk produksi dan masa depan.</p>
+            </div>
+
+            <div class="income-card">
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <div class="money-icon">2</div>
+                    <h4 style="margin: 0; color: var(--primary);">LEVEL MENENGAH (3-7 JUTA/BULAN)</h4>
+                </div>
+                <p><strong>Gejala:</strong> Mulai longgar tapi tetap bocor, nabung gak pernah terkumpul, sering "kehabisan" padahal income naik.</p>
+                <p><strong>Penyebab Utama:</strong> Gaya hidup naik lebih cepat dari sistem keuangan. Saat income 5 juta, hidup seperti orang berpenghasilan 8 juta.</p>
+            </div>
+
+            <p style="font-size: 10pt; color: #666; margin-top: 20px;"><i>Lanjutan di halaman berikut...</i></p>
+        </div>
+        <div class="footer-strip">1</div>
+    </div>
+
+    <!-- BAB 1 - HALAMAN 2 -->
+    <div class="page">
+        <div class="header-strip">Bagian 1: Realita Uang Kreator (Lanjutan)</div>
+        <div class="content-area">
+            <div class="income-card">
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <div class="money-icon">3</div>
+                    <h4 style="margin: 0; color: var(--primary);">LEVEL PRO (10 JUTA+/BULAN)</h4>
+                </div>
+                <p><strong>Gejala:</strong> Income besar tapi stres makin besar, takut view drop, hidup dalam ketakutan meski penghasilan tinggi.</p>
+                <p><strong>Penyebab Utama:</strong> Tidak punya sistem proteksi untuk bulan-bulan sepi. Semua telur dalam satu keranjang.</p>
+            </div>
+
+            <div class="box-warning">
+                <strong>🔥 INSIGHT PENTING:</strong><br>
+                Naik uang tanpa sistem = masalah baru yang lebih kompleks.<br>
+                Turun uang tanpa sistem = panic attack dan keputusan buruk.
+            </div>
+
+            <h3>ANALISIS KEBOCORAN UMUM:</h3>
+            <table class="table-income">
+                <tr>
+                    <th>Jenis Kebocoran</th>
+                    <th>Contoh</th>
+                    <th>Solusi Awal</th>
+                </tr>
+                <tr>
+                    <td>Produksi Berlebihan</td>
+                    <td>Beli gear mahal tanpa ROI jelas</td>
+                    <td>Hitung ROI sebelum beli</td>
+                </tr>
+                <tr>
+                    <td>Lifestyle Inflation</td>
+                    <td>Langganan premium semua, makan luar terus</td>
+                    <td>Pisahkan kebutuhan vs keinginan</td>
+                </tr>
+                <tr>
+                    <td>Tanpa Dana Darurat</td>
+                    <td>Semua uang dipakai, tidak ada backup</td>
+                    <td>Sisihkan 10% pertama</td>
+                </tr>
+                <tr>
+                    <td>Pajak Tidak Disiapkan</td>
+                    <td>Kaget saat tagihan pajak datang</td>
+                    <td>Pisahkan 2.5-10% tiap income</td>
+                </tr>
+            </table>
+        </div>
+        <div class="footer-strip">2</div>
+    </div>
+
+    <!-- BAB 1 - HALAMAN 3 -->
+    <div class="page">
+        <div class="header-strip">Bagian 1: Realita Uang Kreator (Lanjutan)</div>
+        <div class="content-area">
+            <h3>LATIHAN: AUDIT KEUANGAN 30 HARI</h3>
+            
+            <p>Sebelum lanjut ke bab berikutnya, lakukan audit sederhana:</p>
+            
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <h5 class="text-green">STEP 1: CATAT SEMUA PEMASUKAN 30 HARI TERAKHIR</h5>
+                <table style="width: 100%; font-size: 9pt;">
+                    <tr>
+                        <td>1. Adsense</td>
+                        <td>Rp _______________</td>
+                    </tr>
+                    <tr>
+                        <td>2. Brand Deal</td>
+                        <td>Rp _______________</td>
+                    </tr>
+                    <tr>
+                        <td>3. Affiliate</td>
+                        <td>Rp _______________</td>
+                    </tr>
+                    <tr>
+                        <td>4. Lainnya</td>
+                        <td>Rp _______________</td>
+                    </tr>
+                    <tr style="border-top: 2px solid var(--primary);">
+                        <td><strong>TOTAL</strong></td>
+                        <td><strong>Rp _______________</strong></td>
+                    </tr>
+                </table>
+                
+                <h5 class="text-green mt-4">STEP 2: CATAT PENGELUARAN PENTING</h5>
+                <table style="width: 100%; font-size: 9pt; margin-top: 10px;">
+                    <tr>
+                        <td>1. Produksi Konten</td>
+                        <td>Rp _______________</td>
+                    </tr>
+                    <tr>
+                        <td>2. Hidup & Kebutuhan</td>
+                        <td>Rp _______________</td>
+                    </tr>
+                    <tr>
+                        <td>3. Lifestyle & Hiburan</td>
+                        <td>Rp _______________</td>
+                    </tr>
+                    <tr>
+                        <td>4. Tabungan/Investasi</td>
+                        <td>Rp _______________</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>PERTANYAAN REFLEKSI:</h3>
+            <ol>
+                <li>Berapa persen income yang langsung habis untuk lifestyle?</li>
+                <li>Apakah ada dana yang disisihkan untuk masa depan?</li>
+                <li>Berapa biaya produksi vs profit yang didapat?</li>
+                <li>Apa kebocoran terbesar yang bisa segera diperbaiki?</li>
+            </ol>
+
+            <div class="checklist-box">
+                <strong>CHECKLIST BAB 1:</strong>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya tahu di level mana saya berada</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya mengidentifikasi minimal 1 kebocoran yang bisa diperbaiki</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya menerima bahwa sistem lebih penting dari jumlah uang</div>
+            </div>
+        </div>
+        <div class="footer-strip">3</div>
+    </div>
+
+    <!-- BAB 2 - HALAMAN 1 -->
+    <div class="page">
+        <div class="header-strip">Bagian 1: Realita Uang Kreator</div>
+        <div class="content-area">
+            <div class="chapter-start">
+                <div class="chapter-num">02</div>
+                <div class="chapter-pre">BAB DUA</div>
+                <h1 class="chapter-main-title">KARAKTER UANG KREATOR<br> YANG BERBEDA</h1>
+                <div class="chapter-sub">Mengenal 4 Jenis Uang & Cara Memperlakukannya</div>
+            </div>
+
+            <p class="drop-cap">Kesalahan fatal pertama kreator: memperlakukan semua uang sama. Padahal, setiap jenis uang kreator punya karakter dan perlakuan khusus.</p>
+
+            <h3 class="text-green mt-4">EMPAT JENIS UANG KREATOR:</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                <!-- Type 1 -->
+                <div style="background: #f0f9f5; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <i class="fas fa-ad" style="color: var(--primary); font-size: 20px; margin-right: 10px;"></i>
+                        <h4 style="margin: 0; color: var(--primary);">UANG ADSENSE</h4>
+                    </div>
+                    <p style="font-size: 9pt; margin-bottom: 10px;"><strong>Karakter:</strong> Fluktuatif, bonus performa, tidak tetap</p>
+                    <p style="font-size: 9pt;"><strong>Perlakuan Sehat:</strong> 50% dana darurat, 30% reinvest, 20% hidup</p>
+                </div>
+
+                <!-- Type 2 -->
+                <div style="background: #f0f9f5; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <i class="fas fa-handshake" style="color: var(--primary); font-size: 20px; margin-right: 10px;"></i>
+                        <h4 style="margin: 0; color: var(--primary);">UANG BRAND DEAL</h4>
+                    </div>
+                    <p style="font-size: 9pt; margin-bottom: 10px;"><strong>Karakter:</strong> Fee kerja, one-time project, bisa besar</p>
+                    <p style="font-size: 9pt;"><strong>Perlakuan Sehat:</strong> 40% fee kerja, 30% profit, 30% pajak+reinvest</p>
+                </div>
+
+                <!-- Type 3 -->
+                <div style="background: #f0f9f5; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <i class="fas fa-link" style="color: var(--primary); font-size: 20px; margin-right: 10px;"></i>
+                        <h4 style="margin: 0; color: var(--primary);">UANG AFFILIATE</h4>
+                    </div>
+                    <p style="font-size: 9pt; margin-bottom: 10px;"><strong>Karakter:</strong> Komisi, hasil referensi, bisa pasif</p>
+                    <p style="font-size: 9pt;"><strong>Perlakuan Sehat:</strong> 50% reinvest konten, 30% boost, 20% profit</p>
+                </div>
+
+                <!-- Type 4 -->
+                <div style="background: #f0f9f5; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <i class="fas fa-shopping-cart" style="color: var(--primary); font-size: 20px; margin-right: 10px;"></i>
+                        <h4 style="margin: 0; color: var(--primary);">PRODUK DIGITAL</h4>
+                    </div>
+                    <p style="font-size: 9pt; margin-bottom: 10px;"><strong>Karakter:</strong> Aset, scalable, income berulang</p>
+                    <p style="font-size: 9pt;"><strong>Perlakuan Sehat:</strong> 30% pengembangan, 40% profit, 30% marketing</p>
+                </div>
+            </div>
+
+            <p style="font-size: 10pt; color: #666; margin-top: 20px;"><i>Lanjutan sistem rekening di halaman berikut...</i></p>
+        </div>
+        <div class="footer-strip">4</div>
+    </div>
+
+    <!-- BAB 2 - HALAMAN 2 -->
+    <div class="page">
+        <div class="header-strip">Bagian 1: Realita Uang Kreator (Lanjutan)</div>
+        <div class="content-area">
+            <h3>SISTEM REKENING MINIMAL UNTUK KREATOR:</h3>
+            
+            <div style="display: flex; gap: 15px; margin: 20px 0;">
+                <!-- Rekening 1 -->
+                <div style="flex: 1; background: linear-gradient(to bottom, #f0f9f5, #e0f3ea); padding: 20px; border-radius: 10px; border: 2px solid var(--primary); text-align: center;">
+                    <div style="width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 24px;">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h5 style="color: var(--primary); margin-bottom: 10px;">REKENING UTAMA</h5>
+                    <ul style="font-size: 9pt; padding-left: 0; list-style: none; text-align: left;">
+                        <li style="margin-bottom: 5px;">✓ Semua uang masuk pertama</li>
+                        <li style="margin-bottom: 5px;">✓ Tidak untuk belanja langsung</li>
+                        <li style="margin-bottom: 5px;">✓ Hanya untuk distribusi</li>
+                        <li>✓ Transfer ke rek lain sesuai sistem</li>
+                    </ul>
+                </div>
+
+                <!-- Rekening 2 -->
+                <div style="flex: 1; background: linear-gradient(to bottom, #fff8e6, #fff0cc); padding: 20px; border-radius: 10px; border: 2px solid var(--secondary); text-align: center;">
+                    <div style="width: 60px; height: 60px; background: var(--secondary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 24px;">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h5 style="color: var(--secondary); margin-bottom: 10px;">REKENING GAJI</h5>
+                    <ul style="font-size: 9pt; padding-left: 0; list-style: none; text-align: left;">
+                        <li style="margin-bottom: 5px;">✓ Gaji bulanan untuk diri sendiri</li>
+                        <li style="margin-bottom: 5px;">✓ Transfer tanggal 1 tiap bulan</li>
+                        <li style="margin-bottom: 5px;">✓ Untuk hidup sehari-hari</li>
+                        <li>✓ Tidak boleh melebihi budget</li>
+                    </ul>
+                </div>
+
+                <!-- Rekening 3 -->
+                <div style="flex: 1; background: linear-gradient(to bottom, #e6f7ff, #cceeff); padding: 20px; border-radius: 10px; border: 2px solid var(--accent); text-align: center;">
+                    <div style="width: 60px; height: 60px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 24px;">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h5 style="color: var(--accent); margin-bottom: 10px;">REKENING DARURAT</h5>
+                    <ul style="font-size: 9pt; padding-left: 0; list-style: none; text-align: left;">
+                        <li style="margin-bottom: 5px;">✓ Dana 3-6 bulan biaya hidup</li>
+                        <li style="margin-bottom: 5px;">✓ Hanya untuk keadaan darurat</li>
+                        <li style="margin-bottom: 5px;">✓ Tidak boleh diutak-atik</li>
+                        <li>✓ Auto-debit dari rek utama</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>KESALAHAN FATAL YANG HARUS DIHINDARI:</h3>
+            <ol>
+                <li><strong>Mencampur semua jenis uang</strong> dalam satu rekening</li>
+                <li><strong>Menganggap Adsense sebagai gaji bulanan</strong> yang pasti</li>
+                <li><strong>Langsung menghabiskan uang brand deal</strong> tanpa menyisakan untuk pajak</li>
+                <li><strong>Tidak memisahkan uang kerja dan uang profit</strong> dari affiliate</li>
+            </ol>
+        </div>
+        <div class="footer-strip">5</div>
+    </div>
+
+    <!-- BAB 2 - HALAMAN 3 -->
+    <div class="page">
+        <div class="header-strip">Bagian 1: Realita Uang Kreator (Lanjutan)</div>
+        <div class="content-area">
+            <h3>FORMULA CEPAT PEMBAGIAN UANG:</h3>
+            
+            <div class="box-formula">
+                <h4 class="text-center" style="color: #b5ffd0;">KETIKA UANG MASUK, BAGI SEGERA:</h4>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                        <h5 style="color: #b5ffd0;">UNTUK PEMULA/MENENGAH</h5>
+                        <p style="font-size: 9pt;">1. 50% untuk hidup (gaji)<br>
+                        2. 30% untuk produksi<br>
+                        3. 20% untuk tabungan</p>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;">
+                        <h5 style="color: #b5ffd0;">UNTUK YANG SUDAH STABIL</h5>
+                        <p style="font-size: 9pt;">1. 40% untuk hidup (gaji)<br>
+                        2. 30% untuk investasi channel<br>
+                        3. 30% untuk masa depan</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="mt-4">LATIHAN: PILIH SISTEM REKENINGMU</h3>
+            
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <p><strong>Pilihan A (Minimal):</strong> 2 Rekening (Utama + Gaji)</p>
+                <p><strong>Pilihan B (Ideal):</strong> 3 Rekening (Utama + Gaji + Darurat)</p>
+                <p><strong>Pilihan C (Lengkap):</strong> 4 Rekening (+ Investasi)</p>
+                
+                <div style="margin-top: 15px;">
+                    <p style="font-size: 9pt;"><strong>Action untuk hari ini:</strong></p>
+                    <div class="checklist-item"><i class="far fa-square"></i> Buka rekening baru jika perlu</div>
+                    <div class="checklist-item"><i class="far fa-square"></i> Set auto-transfer untuk gaji</div>
+                    <div class="checklist-item"><i class="far fa-square"></i> Buat spreadsheet tracking</div>
+                </div>
+            </div>
+
+            <div class="checklist-box">
+                <strong>CHECKLIST BAB 2:</strong>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya bisa membedakan 4 jenis uang kreator</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya sudah punya minimal 2 rekening terpisah</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya tidak lagi mengandalkan Adsense sebagai gaji tetap</div>
+            </div>
+        </div>
+        <div class="footer-strip">6</div>
+    </div>
+
+    <!-- ==================== BAGIAN 2: SISTEM DASAR KEUANGAN ==================== -->
+
+    <!-- BAB 3 - HALAMAN 1 -->
+    <div class="page">
+        <div class="header-strip">Bagian 2: Sistem Dasar Keuangan</div>
+        <div class="content-area">
+            <div class="chapter-start">
+                <div class="chapter-num">03</div>
+                <div class="chapter-pre">BAB TIGA</div>
+                <h1 class="chapter-main-title">SISTEM POS KEUANGAN<br> FLEKSIBEL</h1>
+                <div class="chapter-sub">Sistem Bertingkat untuk Semua Level Income</div>
+            </div>
+
+            <p class="drop-cap">Tidak ada sistem yang cocok untuk semua level. Sistem yang baik adalah sistem yang tumbuh bersama income-mu.</p>
+
+            <div class="box-success">
+                <h4 class="text-green">💡 PRINSIP DASAR:</h4>
+                <p>Mulai dari sistem sederhana, lalu berkembang sesuai kenaikan income. Jangan langsung pakai sistem kompleks kalau income masih kecil.</p>
+            </div>
+
+            <h3 class="mt-4">SISTEM LEVEL 1: INCOME 1-3 JUTA/BULAN</h3>
+            
+            <div style="background: #f0f9f5; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="width: 30px; height: 30px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-weight: bold;">1</div>
+                    <h4 style="margin: 0; color: var(--primary);">FOKUS UTAMA: BERTAHAN DAN STABIL</h4>
+                </div>
+                <p><strong>💡 SISTEM:</strong> 1 Rekening + 3 Amplop Digital</p>
+                
+                <table style="margin-top: 15px;">
+                    <tr>
+                        <th style="width: 30%; background: var(--primary);">POS</th>
+                        <th style="width: 20%; background: var(--primary);">ALOKASI</th>
+                        <th style="background: var(--primary);">KETERANGAN</th>
+                    </tr>
+                    <tr>
+                        <td><strong>HIDUP</strong></td>
+                        <td>60-70%</td>
+                        <td>Makan, transport, kebutuhan pokok. <em>Ini adalah prioritas.</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>PRODUKSI</strong></td>
+                        <td>20-30%</td>
+                        <td>Internet, listrik, maintenance alat. <em>Jangan diabaikan.</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>AMAN</strong></td>
+                        <td>10%</td>
+                        <td>Tabungan kecil. <em>Mulai dari Rp 100rb/bulan.</em></td>
+                    </tr>
+                </table>
+            </div>
+
+            <p style="font-size: 10pt; color: #666; margin-top: 20px;"><i>Lanjutan Level 2 & 3 di halaman berikut...</i></p>
+        </div>
+        <div class="footer-strip">7</div>
+    </div>
+
+    <!-- BAB 3 - HALAMAN 2 -->
+    <div class="page">
+        <div class="header-strip">Bagian 2: Sistem Dasar Keuangan (Lanjutan)</div>
+        <div class="content-area">
+            <h3>SISTEM LEVEL 2: INCOME 3-7 JUTA/BULAN</h3>
+            
+            <div style="background: #fff8e6; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="width: 30px; height: 30px; background: var(--secondary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-weight: bold;">2</div>
+                    <h4 style="margin: 0; color: var(--secondary);">FOKUS UTAMA: STABILISASI & GAJI KREATOR</h4>
+                </div>
+                <p><strong>💡 SISTEM:</strong> 2 Rekening + Dana Darurat Kecil</p>
+                
+                <div style="display: flex; gap: 15px; margin: 20px 0;">
+                    <div style="flex: 1; background: white; padding: 15px; border-radius: 8px; border: 1px solid var(--primary);">
+                        <h5 style="color: var(--primary); margin-bottom: 10px;">REKENING 1: OPERASIONAL</h5>
+                        <ul style="font-size: 9pt; padding-left: 15px;">
+                            <li>• Semua uang masuk pertama</li>
+                            <li>• Dana produksi & upgrade</li>
+                            <li>• Pajak dipisahkan</li>
+                            <li>• Investasi channel</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1; background: white; padding: 15px; border-radius: 8px; border: 1px solid var(--secondary);">
+                        <h5 style="color: var(--secondary); margin-bottom: 10px;">REKENING 2: GAJI KREATOR</h5>
+                        <ul style="font-size: 9pt; padding-left: 15px;">
+                            <li>• Gaji bulanan tetap</li>
+                            <li>• Transfer tanggal 1 tiap bulan</li>
+                            <li>• Hanya untuk hidup</li>
+                            <li>• Budget tidak boleh lebih</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>SISTEM LEVEL 3: INCOME 8 JUTA+/BULAN</h3>
+            
+            <div style="background: #e6f7ff; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="width: 30px; height: 30px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-weight: bold;">3</div>
+                    <h4 style="margin: 0; color: var(--accent);">FOKUS UTAMA: PROTEKSI & SCALING AMAN</h4>
+                </div>
+                <p><strong>💡 SISTEM:</strong> 3 Rekening Lengkap + Multiple Income Stream</p>
+                
+                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                    <div style="text-align: center; flex: 1;">
+                        <div style="width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-size: 20px;">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <strong>OPERASIONAL</strong><br>
+                        <span style="font-size: 8pt;">Semua income masuk<br>Dana produksi & tim</span>
+                    </div>
+                    <div style="text-align: center; flex: 1;">
+                        <div style="width: 60px; height: 60px; background: var(--secondary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-size: 20px;">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <strong>GAJI</strong><br>
+                        <span style="font-size: 8pt;">Gaji tetap kreator<br>+ tim kecil</span>
+                    </div>
+                    <div style="text-align: center; flex: 1;">
+                        <div style="width: 60px; height: 60px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-size: 20px;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <strong>INVESTASI</strong><br>
+                        <span style="font-size: 8pt;">Dana darurat 6 bulan<br>+ investasi jangka</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-strip">8</div>
+    </div>
+
+    <!-- BAB 3 - HALAMAN 3 -->
+    <div class="page">
+        <div class="header-strip">Bagian 2: Sistem Dasar Keuangan (Lanjutan)</div>
+        <div class="content-area">
+            <h3 class="text-green">VISUALISASI ALIRAN UANG LEVEL 3</h3>
+            
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <div style="display: inline-block; background: var(--primary); color: white; padding: 10px 20px; border-radius: 20px; font-weight: bold;">
+                        <i class="fas fa-money-bill-wave"></i> INCOME MASUK
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                    <div style="width: 80%; height: 2px; background: var(--primary); position: relative;">
+                        <div style="position: absolute; top: -10px; left: 33%; width: 20px; height: 20px; background: var(--primary); transform: rotate(45deg);"></div>
+                        <div style="position: absolute; top: -10px; left: 66%; width: 20px; height: 20px; background: var(--primary); transform: rotate(45deg);"></div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between;">
+                    <div style="text-align: center; width: 30%;">
+                        <div style="background: var(--primary-light); padding: 15px; border-radius: 8px; border: 2px solid var(--primary);">
+                            <strong>GAJI PRIBADI</strong><br>
+                            <span style="font-size: 9pt;">30-50% dari income</span>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 9pt;">Untuk hidup & kebutuhan</div>
+                    </div>
+                    
+                    <div style="text-align: center; width: 30%;">
+                        <div style="background: var(--primary-light); padding: 15px; border-radius: 8px; border: 2px solid var(--primary);">
+                            <strong>REINVEST CHANNEL</strong><br>
+                            <span style="font-size: 9pt;">20-40% dari income</span>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 9pt;">Produksi, tim, upgrade</div>
+                    </div>
+                    
+                    <div style="text-align: center; width: 30%;">
+                        <div style="background: var(--primary-light); padding: 15px; border-radius: 8px; border: 2px solid var(--primary);">
+                            <strong>INVESTASI & TABUNGAN</strong><br>
+                            <span style="font-size: 9pt;">20-30% dari income</span>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 9pt;">Dana darurat & masa depan</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>ATURAN TRANSISI LEVEL:</h3>
+            <ol>
+                <li><strong>Naik ke Level 2:</strong> Saat income stabil di 3 juta+ selama 3 bulan berturut-turut</li>
+                <li><strong>Naik ke Level 3:</strong> Saat income stabil di 8 juta+ selama 6 bulan berturut-turut</li>
+                <li><strong>Tetap di Level 1:</strong> Jika income masih fluktuatif di bawah 3 juta</li>
+                <li><strong>Turun Level:</strong> Jika income turun drastis, kembali ke sistem level sebelumnya</li>
+            </ol>
+
+            <div class="checklist-box">
+                <strong>CHECKLIST BAB 3:</strong>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya memilih sistem sesuai level income saya</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya sudah membagi rekening sesuai kebutuhan</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya punya target naik ke sistem level berikutnya</div>
+            </div>
+        </div>
+        <div class="footer-strip">9</div>
+    </div>
+
+    <!-- BAB 4 - HALAMAN 1 -->
+    <div class="page">
+        <div class="header-strip">Bagian 2: Sistem Dasar Keuangan</div>
+        <div class="content-area">
+            <div class="chapter-start">
+                <div class="chapter-num">04</div>
+                <div class="chapter-pre">BAB EMPAT</div>
+                <h1 class="chapter-main-title">SISTEM GAJI KREATOR<br> (WAJIB DITERAPKAN)</h1>
+                <div class="chapter-sub">Cara Memberi Gaji pada Diri Sendiri Meski Penghasilan Tidak Tetap</div>
+            </div>
+
+            <p class="drop-cap">Ini adalah konsep paling revolusioner dalam buku ini: <strong>kreator wajib digaji.</strong> Tanpa gaji, uang akan selalu terasa kurang dan hidup akan terus dalam mode "survival".</p>
+
+            <div class="box-warning">
+                <strong>📌 ATURAN EMAS GAJI KREATOR:</strong><br>
+                "Jangan pernah mengambil semua uang yang masuk hanya karena kamu bisa. Disiplin adalah harga untuk kebebasan finansial."
+            </div>
+
+            <h3 class="mt-4">MENGAPA GAJI KREATOR PENTING?</h3>
+            <div style="background: #f0f9f5; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div>
+                        <h5 style="color: var(--primary); margin-bottom: 10px;">TANPA GAJI KREATOR</h5>
+                        <ul style="font-size: 9pt; padding-left: 15px;">
+                            <li>• Hidup dari sisa uang</li>
+                            <li>• Stres saat income turun</li>
+                            <li>• Gaya hidup tidak terkontrol</li>
+                            <li>• Tidak ada kepastian</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 style="color: var(--secondary); margin-bottom: 10px;">DENGAN GAJI KREATOR</h5>
+                        <ul style="font-size: 9pt; padding-left: 15px;">
+                            <li>• Hidup dari gaji tetap</li>
+                            <li>• Tenang meski income fluktuatif</li>
+                            <li>• Gaya hidup terkontrol</li>
+                            <li>• Ada kepastian finansial</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>SIMULASI PENENTUAN GAJI:</h3>
+            <table class="table-income">
+                <tr>
+                    <th>INCOME/BULAN</th>
+                    <th>GAJI AMAN</th>
+                    <th>FORMULA</th>
+                    <th>SISA UNTUK</th>
+                </tr>
+                <tr>
+                    <td>Rp 1.500.000</td>
+                    <td>Rp 800.000</td>
+                    <td>50-60% dari income</td>
+                    <td>Produksi + tabungan kecil</td>
+                </tr>
+                <tr>
+                    <td>Rp 3.000.000</td>
+                    <td>Rp 1.500.000</td>
+                    <td>50% dari income</td>
+                    <td>Produksi + tabungan + investasi</td>
+                </tr>
+            </table>
+
+            <p style="font-size: 10pt; color: #666; margin-top: 20px;"><i>Lanjutan simulasi & formula di halaman berikut...</i></p>
+        </div>
+        <div class="footer-strip">10</div>
+    </div>
+
+    <!-- BAB 4 - HALAMAN 2 -->
+    <div class="page">
+        <div class="header-strip">Bagian 2: Sistem Dasar Keuangan (Lanjutan)</div>
+        <div class="content-area">
+            <h3>SIMULASI PENENTUAN GAJI (LANJUTAN):</h3>
+            <table class="table-income">
+                <tr>
+                    <th>INCOME/BULAN</th>
+                    <th>GAJI AMAN</th>
+                    <th>FORMULA</th>
+                    <th>SISA UNTUK</th>
+                </tr>
+                <tr>
+                    <td>Rp 7.000.000</td>
+                    <td>Rp 3.000.000 (tetap)</td>
+                    <td>Max 50% dari income</td>
+                    <td>Sisa dikunci untuk dana darurat & investasi</td>
+                </tr>
+                <tr>
+                    <td>Rp 15.000.000+</td>
+                    <td>Rp 5.000.000 (maks)</td>
+                    <td>Max 35% dari income</td>
+                    <td>Profit dikunci, bangun multiple income</td>
+                </tr>
+            </table>
+
+            <h3 class="mt-4">FORMULA GAJI KREATOR SEHAT:</h3>
+            <div class="box-formula">
+                <h4 class="text-center" style="color: #b5ffd0;">FORMULA 50/30/20 UNTUK PEMULA-MENENGAH</h4>
+                <p class="text-center" style="font-size: 14pt;">(INCOME BULAN INI - BIAYA PRODUKSI) × 50% = GAJI</p>
+                <hr style="border-color: #555;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <h5 style="color: #b5ffd0;">50%</h5>
+                        <p style="font-size: 9pt;">Untuk gaji hidup<br><small>(maksimal dari sisa)</small></p>
+                    </div>
+                    <div style="text-align: center;">
+                        <h5 style="color: #b5ffd0;">30%</h5>
+                        <p style="font-size: 9pt;">Untuk reinvest ke channel<br><small>(produksi & upgrade)</small></p>
+                    </div>
+                    <div style="text-align: center;">
+                        <h5 style="color: #b5ffd0;">20%</h5>
+                        <p style="font-size: 9pt;">Untuk tabungan/investasi<br><small>(dana darurat pertama)</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-strip">11</div>
+    </div>
+
+    <!-- BAB 4 - HALAMAN 3 -->
+    <div class="page">
+        <div class="header-strip">Bagian 2: Sistem Dasar Keuangan (Lanjutan)</div>
+        <div class="content-area">
+            <h3>JADWAL TRANSFER GAJI YANG DISIPLIN:</h3>
+            
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h4 style="margin: 0; color: var(--primary);">KALENDER TRANSFER GAJI</h4>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+                        <h5 style="color: var(--primary); margin-bottom: 10px;">TANGGAL 1</h5>
+                        <p style="font-size: 9pt; margin: 0;">Transfer gaji ke rekening pribadi<br><strong>Action:</strong> Set auto-debit jika bisa</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+                        <h5 style="color: var(--primary); margin-bottom: 10px;">TANGGAL 5</h5>
+                        <p style="font-size: 9pt; margin: 0;">Bayar semua tagihan produksi<br><strong>Action:</strong> List semua tagihan bulanan</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+                        <h5 style="color: var(--primary); margin-bottom: 10px;">TANGGAL 10</h5>
+                        <p style="font-size: 9pt; margin: 0;">Transfer ke rekening tabungan<br><strong>Action:</strong> Minimal 10% dari income</p>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+                        <h5 style="color: var(--primary); margin-bottom: 10px;">TANGGAL 25</h5>
+                        <p style="font-size: 9pt; margin: 0;">Review bulanan & adjust<br><strong>Action:</strong> Evaluasi, adjust jika perlu</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-warning" style="background: #fff8e6; border-color: var(--secondary);">
+                <strong>💡 TIPS UNTUK PEMULA:</strong><br>
+                Mulai dengan gaji minimal yang bisa membuatmu survive. Contoh: Income 2 juta, ambil gaji 1,2 juta. Hidup sederhana dulu, fokus naikin income. Jangan langsung gaya hidup tinggi.
+            </div>
+
+            <div class="checklist-box">
+                <strong>CHECKLIST BAB 4:</strong>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya sudah menghitung gaji realistis untuk diri sendiri</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya punya jadwal transfer gaji yang tetap</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya tidak mengambil semua uang meskipun bisa</div>
+            </div>
+        </div>
+        <div class="footer-strip">12</div>
+    </div>
+
+    <!-- ==================== BAGIAN 3: MENGELOLA SUMBER INCOME ==================== -->
+
+    <!-- BAB 5 - HALAMAN 1 -->
+    <div class="page">
+        <div class="header-strip">Bagian 3: Mengelola Sumber Income</div>
+        <div class="content-area">
+            <div class="chapter-start">
+                <div class="chapter-num">05</div>
+                <div class="chapter-pre">BAB LIMA</div>
+                <h1 class="chapter-main-title">MENGELOLA ADSENSE<br> DENGAN AMAN</h1>
+                <div class="chapter-sub">Prinsip Menggunakan Uang yang Paling Fluktuatif</div>
+            </div>
+
+            <p class="drop-cap">Adsense bukan gaji. Adsense adalah <strong>bonus performa</strong> yang datang dan pergi sesuai mood algoritma. Perlakukan dengan bijak.</p>
+
+            <h3 class="text-green mt-4">PRINSIP DASAR ADSENSE:</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0;">
+                <div style="background: #e8f6ef; padding: 15px; border-radius: 8px; text-align: center; border: 2px solid #b8e6cf;">
+                    <h5 style="color: var(--primary);">ADSENSE KECIL<br><small>< 3 juta/bulan</small></h5>
+                    <div style="height: 5px; background: #ddd; margin: 10px 0; border-radius: 3px;">
+                        <div style="width: 30%; height: 5px; background: var(--primary); border-radius: 3px;"></div>
+                    </div>
+                    <p style="font-size: 9pt;">Jangan dipaksakan. Fokus naikin view & kualitas dulu.</p>
+                </div>
+                
+                <div style="background: #d4f0e2; padding: 15px; border-radius: 8px; text-align: center; border: 2px solid #8cd4b2;">
+                    <h5 style="color: var(--primary-dark);">ADSENSE SEDANG<br><small>3-10 juta/bulan</small></h5>
+                    <div style="height: 5px; background: #ddd; margin: 10px 0; border-radius: 3px;">
+                        <div style="width: 60%; height: 5px; background: var(--primary); border-radius: 3px;"></div>
+                    </div>
+                    <p style="font-size: 9pt;">Mulai dibagi: hidup, produksi, tabungan. Jangan habiskan semua.</p>
+                </div>
+                
+                <div style="background: #b8e6cf; padding: 15px; border-radius: 8px; text-align: center; border: 2px solid var(--primary);">
+                    <h5 style="color: var(--primary-dark);">ADSENSE BESAR<br><small>> 10 juta/bulan</small></h5>
+                    <div style="height: 5px; background: #ddd; margin: 10px 0; border-radius: 3px;">
+                        <div style="width: 90%; height: 5px; background: var(--primary); border-radius: 3px;"></div>
+                    </div>
+                    <p style="font-size: 9pt;">Jangan dijadikan sandaran. Diversifikasi income wajib.</p>
+                </div>
+            </div>
+
+            <div class="box-warning">
+                <strong>🚨 PERINGATAN KRITIS:</strong><br>
+                Selalu siapkan 3-6 bulan tanpa Adsense.<br>
+                Channel yang sehat = tidak bergantung 100% pada Adsense.
+            </div>
+
+            <p style="font-size: 10pt; color: #666; margin-top: 20px;"><i>Lanjutan formula pembagian di halaman berikut...</i></p>
+        </div>
+        <div class="footer-strip">13</div>
+    </div>
+
+    <!-- BAB 5 - HALAMAN 2 -->
+    <div class="page">
+        <div class="header-strip">Bagian 3: Mengelola Sumber Income (Lanjutan)</div>
+        <div class="content-area">
+            <h3>FORMULA PEMBAGIAN ADSENSE SEHAT:</h3>
+            
+            <div style="background: linear-gradient(to right, #f0f9f5, #e0f3ea); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <h4 class="text-center text-green">CONTOH: ADSENSE Rp 5.000.000/BULAN</h4>
+                
+                <!-- Progress Visualization -->
+                <div style="display: flex; height: 30px; background: #ddd; border-radius: 15px; overflow: hidden; margin: 20px 0;">
+                    <div style="flex: 50; background: var(--primary); display: flex; align-items: center; justify-content: center; color: white; font-size: 9pt; font-weight: bold;">50%</div>
+                    <div style="flex: 30; background: var(--secondary); display: flex; align-items: center; justify-content: center; color: white; font-size: 9pt; font-weight: bold;">30%</div>
+                    <div style="flex: 20; background: var(--accent); display: flex; align-items: center; justify-content: center; color: white; font-size: 9pt; font-weight: bold;">20%</div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                    <div style="text-align: center; flex: 1;">
+                        <div style="font-size: 11pt; color: var(--primary); font-weight: bold;">Rp 2,5 JUTA</div>
+                        <div style="font-size: 8pt;">DANA DARURAT</div>
+                    </div>
+                    <div style="text-align: center; flex: 1;">
+                        <div style="font-size: 11pt; color: var(--secondary); font-weight: bold;">Rp 1,5 JUTA</div>
+                        <div style="font-size: 8pt;">REINVEST PRODUKSI</div>
+                    </div>
+                    <div style="text-align: center; flex: 1;">
+                        <div style="font-size: 11pt; color: var(--accent); font-weight: bold;">Rp 1 JUTA</div>
+                        <div style="font-size: 8pt;">GAJI TAMBAHAN</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>CATATAN PENTING:</h3>
+            <ul>
+                <li><strong>Dana Darurat:</strong> Prioritas pertama sampai terkumpul 6 bulan biaya hidup</li>
+                <li><strong>Reinvest Produksi:</strong> Untuk upgrade alat, kursus, atau outsourcing</li>
+                <li><strong>Gaji Tambahan:</strong> Bukan kebutuhan, hanya bonus setelah kebutuhan terpenuhi</li>
+                <li><strong>Flexible:</strong> Sesuaikan persentase dengan kondisi dana daruratmu</li>
+            </ul>
+        </div>
+        <div class="footer-strip">14</div>
+    </div>
+
+    <!-- BAB 5 - HALAMAN 3 -->
+    <div class="page">
+        <div class="header-strip">Bagian 3: Mengelola Sumber Income (Lanjutan)</div>
+        <div class="content-area">
+            <h3>SKENARIO BULAN SEPI & TINDAKAN:</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                <!-- Scenario 1 -->
+                <div style="background: #fff8e6; padding: 15px; border-radius: 8px; border: 2px solid #ffcc80;">
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <div style="width: 25px; height: 25px; background: #ff9900; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 10pt; font-weight: bold;">1</div>
+                        <h5 style="margin: 0; color: #cc7a00;">ADSENSE TURUN 50%+</h5>
+                    </div>
+                    <p style="font-size: 9pt; margin-bottom: 10px;"><strong>Gejala:</strong> RPM turun drastis, CPM anjlok</p>
+                    <p style="font-size: 9pt; margin-bottom: 5px;"><strong>Aksi:</strong></p>
+                    <ul style="font-size: 8pt; padding-left: 15px; margin: 0;">
+                        <li>Aktifkan emergency kit konten</li>
+                        <li>Fokus pada konten low effort</li>
+                        <li>Evaluasi niche & konten</li>
+                    </ul>
+                    <p style="font-size: 8pt; margin-top: 10px;"><strong>Target:</strong> Maintain momentum, survive</p>
+                </div>
+
+                <!-- Scenario 2 -->
+                <div style="background: #ffe6e6; padding: 15px; border-radius: 8px; border: 2px solid #ff9999;">
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <div style="width: 25px; height: 25px; background: #ff3333; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 10pt; font-weight: bold;">2</div>
+                        <h5 style="margin: 0; color: #cc0000;">ADSENSE TURUN 80%+</h5>
+                    </div>
+                    <p style="font-size: 9pt; margin-bottom: 10px;"><strong>Gejala:</strong> Hampir tidak ada income dari Adsense</p>
+                    <p style="font-size: 9pt; margin-bottom: 5px;"><strong>Aksi:</strong></p>
+                    <ul style="font-size: 8pt; padding-left: 15px; margin: 0;">
+                        <li>Gunakan dana darurat (jika ada)</li>
+                        <li>Buat content plan recovery</li>
+                        <li>Diversifikasi income segera</li>
+                    </ul>
+                    <p style="font-size: 8pt; margin-top: 10px;"><strong>Target:</strong> Survive 3-6 bulan</p>
+                </div>
+
+                <!-- Scenario 3 -->
+                <div style="background: #e6e6ff; padding: 15px; border-radius: 8px; border: 2px solid #9999ff;">
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <div style="width: 25px; height: 25px; background: #3333ff; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 10pt; font-weight: bold;">3</div>
+                        <h5 style="margin: 0; color: #0000cc;">DEMONETIZED</h5>
+                    </div>
+                    <p style="font-size: 9pt; margin-bottom: 10px;"><strong>Gejala:</strong> Channel tidak dapat Adsense</p>
+                    <p style="font-size: 9pt; margin-bottom: 5px;"><strong>Aksi:</strong></p>
+                    <ul style="font-size: 8pt; padding-left: 15px; margin: 0;">
+                        <li>Fokus brand deal/affiliate</li>
+                        <li>Bangun produk digital</li>
+                        <li>Pertimbangkan channel baru</li>
+                    </ul>
+                    <p style="font-size: 8pt; margin-top: 10px;"><strong>Target:</strong> Replace income source</p>
+                </div>
+
+                <!-- Scenario 4 -->
+                <div style="background: #e6ffe6; padding: 15px; border-radius: 8px; border: 2px solid #80ff80;">
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <div style="width: 25px; height: 25px; background: #00cc00; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 10pt; font-weight: bold;">4</div>
+                        <h5 style="margin: 0; color: #006600;">ADSENSE NAIK 2X+</h5>
+                    </div>
+                    <p style="font-size: 9pt; margin-bottom: 10px;"><strong>Gejala:</strong> Income Adsense melonjak</p>
+                    <p style="font-size: 9pt; margin-bottom: 5px;"><strong>Aksi:</strong></p>
+                    <ul style="font-size: 8pt; padding-left: 15px; margin: 0;">
+                        <li>Jangan naikkan gaya hidup</li>
+                        <li>Perbesar dana darurat</li>
+                        <li>Investasikan ke channel</li>
+                    </ul>
+                    <p style="font-size: 8pt; margin-top: 10px;"><strong>Target:</strong> Amankan keuntungan</p>
+                </div>
+            </div>
+
+            <div class="checklist-box">
+                <strong>CHECKLIST BAB 5:</strong>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya tidak bergantung 100% pada Adsense</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya punya formula pembagian Adsense</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya siap dengan skenario bulan sepi</div>
+            </div>
+        </div>
+        <div class="footer-strip">15</div>
+    </div>
+
+    <!-- BAB 6 - HALAMAN 1 -->
+    <div class="page">
+        <div class="header-strip">Bagian 3: Mengelola Sumber Income</div>
+        <div class="content-area">
+            <div class="chapter-start">
+                <div class="chapter-num">06</div>
+                <div class="chapter-pre">BAB ENAM</div>
+                <h1 class="chapter-main-title">BRAND DEAL & AFFILIATE<br> TANPA BOCOR</h1>
+                <div class="chapter-sub">Mengelola Income Besar agar Tidak Habis Percuma</div>
+            </div>
+
+            <p class="drop-cap">Brand deal dan affiliate adalah income yang "seharusnya" membuatmu kaya, tapi justru sering membuat bangkrut karena salah kelola.</p>
+
+            <h3 class="text-green mt-4">FORMULA SEHAT BRAND DEAL:</h3>
+            <div class="box-formula">
+                <h4 class="text-center" style="color: #b5ffd0;">FEE BRAND DEAL Rp 10.000.000</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px;">
+                    <div style="text-align: center; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 5px;">
+                        <h5 style="color: #b5ffd0;">40%<br>FEE KERJA</h5>
+                        <p style="font-size: 8pt;">Rp 4.000.000<br>Untuk waktu & skill</p>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 5px;">
+                        <h5 style="color: #b5ffd0;">30%<br>PROFIT</h5>
+                        <p style="font-size: 8pt;">Rp 3.000.000<br>Ditabung/investasi</p>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 5px;">
+                        <h5 style="color: #b5ffd0;">30%<br>PAJAK & REINVEST</h5>
+                        <p style="font-size: 8pt;">Rp 3.000.000<br>Pajak + upgrade alat</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>KESALAHAN UMUM YANG HARUS DIHINDARI:</h3>
+            <ol>
+                <li><strong>Langsung habisin uang endorse</strong> untuk barang mewah</li>
+                <li><strong>Tidak menyisakan untuk pajak</strong> (bisa kena denda)</li>
+                <li><strong>Tidak invest ke channel</strong> setelah dapet project besar</li>
+                <li><strong>Menerima semua deal</strong> tanpa filter kualitas</li>
+            </ol>
+
+            <p style="font-size: 10pt; color: #666; margin-top: 20px;"><i>Lanjutan affiliate & checklist di halaman berikut...</i></p>
+        </div>
+        <div class="footer-strip">16</div>
+    </div>
+
+    <!-- BAB 6 - HALAMAN 2 -->
+    <div class="page">
+        <div class="header-strip">Bagian 3: Mengelola Sumber Income (Lanjutan)</div>
+        <div class="content-area">
+            <h3>AFFILIATE: UANG YANG HARUS DIPUTAR ULANG</h3>
+            <div style="background: #e8f5e9; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <h4 class="text-green">PRINSIP AFFILIATE SEHAT:</h4>
+                <p>"Setiap Rp 1.000.000 dari affiliate, reinvest minimal Rp 300.000 untuk buat konten affiliate yang lebih baik."</p>
+                
+                <div style="display: flex; gap: 15px; margin-top: 15px;">
+                    <div style="flex: 1; background: white; padding: 10px; border-radius: 5px;">
+                        <strong>Rp 500.000</strong><br>
+                        <small>Buat konten review</small>
+                    </div>
+                    <div style="flex: 1; background: white; padding: 10px; border-radius: 5px;">
+                        <strong>Rp 300.000</strong><br>
+                        <small>Boost/ads</small>
+                    </div>
+                    <div style="flex: 1; background: white; padding: 10px; border-radius: 5px;">
+                        <strong>Rp 200.000</strong><br>
+                        <small>Profit pribadi</small>
+                    </div>
+                </div>
+            </div>
+
+            <h3>CHECKLIST SEBELUM TERIMA BRAND DEAL:</h3>
+            <div class="checklist-box">
+                <div class="checklist-item"><i class="far fa-square"></i> Fee sesuai effort? (minimal 2-5x rate adsense)</div>
+                <div class="checklist-item"><i class="far fa-square"></i> Brand sesuai niche dan nilai channel?</div>
+                <div class="checklist-item"><i class="far fa-square"></i> Deadline realistis?</div>
+                <div class="checklist-item"><i class="far fa-square"></i> Sudah hitung biaya produksi + pajak?</div>
+                <div class="checklist-item"><i class="far fa-square"></i> Ada kontrak jelas?</div>
+            </div>
+        </div>
+        <div class="footer-strip">17</div>
+    </div>
+
+    <!-- BAB 6 - HALAMAN 3 -->
+    <div class="page">
+        <div class="header-strip">Bagian 3: Mengelola Sumber Income (Lanjutan)</div>
+        <div class="content-area">
+            <h3>NEGOSIASI FEE YANG RASIONAL:</h3>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h5 style="color: var(--primary);">BASELINE FEE</h5>
+                    <p style="font-size: 9pt;">Hitung rate adsense per 1.000 view × 3-5. Contoh: RPM Rp 20 × 5 = Rp 100/1.000 view</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h5 style="color: var(--primary);">ADD-ONS</h5>
+                    <p style="font-size: 9pt;">Tambah untuk: extra platform (IG/TT), exclusivity period, usage rights</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h5 style="color: var(--primary);">PAKET VALUE</h5>
+                    <p style="font-size: 9pt;">Tawarkan paket: 1 video + 3 IG posts + story = lebih menarik</p>
+                </div>
+            </div>
+
+            <h3 class="mt-4">SISTEM INVOICE & PEMBAYARAN:</h3>
+            <ol>
+                <li><strong>50% di awal</strong> - sebelum mulai produksi</li>
+                <li><strong>50% setelah approval</strong> - sebelum posting</li>
+                <li><strong>Terms: 14 hari</strong> - maksimal waktu pembayaran</li>
+                <li><strong>Late fee 2%/minggu</strong> - untuk keterlambatan</li>
+            </ol>
+
+            <div class="box-warning">
+                <strong>🚫 DEAL YANG HARUS DITOLAK:</strong><br>
+                • Barter produk (kecuali benar-benar butuh)<br>
+                • "Exposure" sebagai pembayaran<br>
+                • Fee terlalu rendah untuk effort besar<br>
+                • Brand tidak sesuai values channel
+            </div>
+
+            <div class="checklist-box">
+                <strong>CHECKLIST BAB 6:</strong>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya punya formula pembagian brand deal</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya sudah siapkan dana pajak terpisah</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya reinvest sebagian income affiliate</div>
+            </div>
+        </div>
+        <div class="footer-strip">18</div>
+    </div>
+
+    <!-- ==================== BAGIAN 4: BANGUN BENTENG KEUANGAN ==================== -->
+
+    <!-- BAB 7 - HALAMAN 1 -->
+    <div class="page">
+        <div class="header-strip">Bagian 4: Bangun Benteng Keuangan</div>
+        <div class="content-area">
+            <div class="chapter-start">
+                <div class="chapter-num">07</div>
+                <div class="chapter-pre">BAB TUJUH</div>
+                <h1 class="chapter-main-title">DANA DARURAT VERSI KREATOR</h1>
+                <div class="chapter-sub">Benteng Keuangan Saat View Drop atau Burnout</div>
+            </div>
+
+            <p class="drop-cap">Dana darurat bukan pilihan mewah. Untuk kreator, ini adalah <strong>keharusan mutlak</strong> yang menentukan apakah kamu bisa bertahan atau tidak.</p>
+
+            <div class="box-warning">
+                <strong>🎯 TARGET DANA DARURAT:</strong><br>
+                • <strong>MINIMAL:</strong> 3 bulan biaya hidup<br>
+                • <strong>IDEAL:</strong> 6 bulan untuk kreator full-time<br>
+                • <strong>AMAN:</strong> 12 bulan jika punya keluarga/tanggungan
+            </div>
+
+            <h3>HITUNGAN REALISTIS:</h3>
+            <div style="background: #f0f7ff; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <p><strong>Biaya Hidup/Bulan:</strong> Rp 3.000.000</p>
+                <p><strong>Target Dana Darurat (6 bulan):</strong> Rp 18.000.000</p>
+                <p><strong>Cara Nabung (jika income 5jt/bulan):</strong> Sisihkan 20% = Rp 1.000.000/bulan</p>
+                <p><strong>Waktu Capai Target:</strong> 18 bulan</p>
+            </div>
+
+            <h3>KAPAN DANA DARURAT BOLEH DIPAKAI?</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Skenario</th>
+                    <th>Boleh Dipakai?</th>
+                    <th>Catatan</th>
+                </tr>
+                <tr>
+                    <td>View drop 70%+ berturut-turut</td>
+                    <td>✅ YA</td>
+                    <td>Untuk hidup selama recovery</td>
+                </tr>
+                <tr>
+                    <td>Burnout butuh istirahat 1 bulan</td>
+                    <td>✅ YA</td>
+                    <td>Biaya hidup saat istirahat</td>
+                </tr>
+            </table>
+
+            <p style="font-size: 10pt; color: #666; margin-top: 20px;"><i>Lanjutan tabel & strategi di halaman berikut...</i></p>
+        </div>
+        <div class="footer-strip">19</div>
+    </div>
+
+    <!-- BAB 7 - HALAMAN 2 -->
+    <div class="page">
+        <div class="header-strip">Bagian 4: Bangun Benteng Keuangan (Lanjutan)</div>
+        <div class="content-area">
+            <h3>KAPAN DANA DARURAT BOLEH DIPAKAI? (LANJUTAN)</h3>
+            <table>
+                <tr>
+                    <th style="width: 40%;">Skenario</th>
+                    <th>Boleh Dipakai?</th>
+                    <th>Catatan</th>
+                </tr>
+                <tr>
+                    <td>Demonetized/channel kena strike</td>
+                    <td>✅ YA</td>
+                    <td>Modal hidup sambil bangun channel baru</td>
+                </tr>
+                <tr>
+                    <td>Mau beli gear baru</td>
+                    <td>❌ TIDAK</td>
+                    <td>Itu bukan darurat</td>
+                </tr>
+                <tr>
+                    <td>Ada sale laptop gaming</td>
+                    <td>❌ TIDAK</td>
+                    <td>Itu bukan darurat</td>
+                </tr>
+                <tr>
+                    <td>Ingin liburan healing</td>
+                    <td>❌ TIDAK</td>
+                    <td>Budget dari gaji, bukan darurat</td>
+                </tr>
+            </table>
+
+            <h3 class="mt-4">STRATEGI NABUNG DANA DARURAT CEPAT:</h3>
+            <ol>
+                <li><strong>Income Pertama dari Brand Deal:</strong> Alokasikan 50% langsung ke dana darurat</li>
+                <li><strong>Adsense di Atas Rata-rata:</strong> Sisihkan kelebihan dari rata-rata 3 bulan</li>
+                <li><strong>Project Besar:</strong> Pisahkan 30% dari profit untuk dana darurat</li>
+                <li><strong>Auto-debit:</strong> Setiap income masuk, auto-transfer 10-20% ke rekening darurat</li>
+            </ol>
+        </div>
+        <div class="footer-strip">20</div>
+    </div>
+
+    <!-- BAB 7 - HALAMAN 3 -->
+    <div class="page">
+        <div class="header-strip">Bagian 4: Bangun Benteng Keuangan (Lanjutan)</div>
+        <div class="content-area">
+            <h3>TRACKING PROGRESS DANA DARURAT:</h3>
+            
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <h5 class="text-green">TARGET: Rp 18.000.000 (6 BULAN BIAYA HIDUP)</h5>
+                
+                <div class="progress-container" style="margin: 15px 0;">
+                    <div class="progress-bar" style="width: 25%;"></div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; font-size: 9pt;">
+                    <div>
+                        <strong>Terkumpul:</strong> Rp 4.500.000<br>
+                        <strong>Sisa:</strong> Rp 13.500.000
+                    </div>
+                    <div>
+                        <strong>Progress:</strong> 25%<br>
+                        <strong>Estimasi:</strong> 9 bulan lagi
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-success">
+                <strong>💡 DANA DARURAT = KETENANGAN MENTAL</strong><br>
+                Dengan dana darurat yang cukup, kamu bisa:<br>
+                • Menolak project tidak bermutu<br>
+                • Istirahat saat burnout tanpa panik<br>
+                • Eksperimen konten tanpa takut gagal<br>
+                • Negosiasi fee dengan percaya diri
+            </div>
+
+            <h3 class="mt-4">TEMPAT MENYIMPAN DANA DARURAT:</h3>
+            <ul>
+                <li><strong>Rekening Terpisah:</strong> Bank berbeda dengan rekening utama</li>
+                <li><strong>Tabungan Berjangka:</strong> Deposito dengan tenor pendek (1-3 bulan)</li>
+                <li><strong>Reksadana Pasar Uang:</strong> Likuid tapi ada return kecil</li>
+                <li><strong>JANGAN:</strong> Saham, crypto, atau investasi berisiko</li>
+            </ul>
+
+            <div class="checklist-box">
+                <strong>CHECKLIST BAB 7:</strong>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya tahu jumlah dana darurat yang saya butuhkan</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya sudah mulai menabung untuk dana darurat</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya punya aturan ketat kapan boleh pakai dana darurat</div>
+            </div>
+        </div>
+        <div class="footer-strip">21</div>
+    </div>
+
+    <!-- BAB 8 - HALAMAN 1 -->
+    <div class="page">
+        <div class="header-strip">Bagian 4: Bangun Benteng Keuangan</div>
+        <div class="content-area">
+            <div class="chapter-start">
+                <div class="chapter-num">08</div>
+                <div class="chapter-pre">BAB DELAPAN</div>
+                <h1 class="chapter-main-title">INVESTASI YANG MASUK AKAL<br> UNTUK KREATOR</h1>
+                <div class="chapter-sub">Urutan Prioritas yang Tidak Membuatmu Bangkrut</div>
+            </div>
+
+            <p>Kreator sering terjebak FOMO investasi: crypto, saham, forex — padahal dana darurat belum ada, hidup masih pas-pasan.</p>
+
+            <h3>URUTAN PRIORITAS YANG BENAR:</h3>
+            <div style="position: relative; margin: 30px 0;">
+                <!-- Step 1 -->
+                <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                    <div style="width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px;">1</div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0; color: var(--primary);">DANA HIDUP AMAN</h4>
+                        <p style="font-size: 10pt; margin: 5px 0 0 0;">Income cukup untuk hidup + produksi. <strong>Tanpa ini, jangan lanjut.</strong></p>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                    <div style="width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px;">2</div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0; color: var(--primary);">DANA DARURAT 3-6 BULAN</h4>
+                        <p style="font-size: 10pt; margin: 5px 0 0 0;">Benteng keuangan dasar. <strong>Harus lengkap dulu.</strong></p>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                    <div style="width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px;">3</div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0; color: var(--primary);">UPGRADE SKILL & ALAT</h4>
+                        <p style="font-size: 10pt; margin: 5px 0 0 0;">Investasi di diri sendiri & channel. ROI paling pasti.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 4 -->
+                <div style="display: flex; align-items: center;">
+                    <div style="width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px;">4</div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0; color: var(--primary);">INVESTASI FINANSIAL</h4>
+                        <p style="font-size: 10pt; margin: 5px 0 0 0;">Setelah 3 step di atas terpenuhi. Mulai dari yang aman.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-size: 10pt; color: #666; margin-top: 20px;"><i>Lanjutan jenis investasi di halaman berikut...</i></p>
+        </div>
+        <div class="footer-strip">22</div>
+    </div>
+
+    <!-- BAB 8 - HALAMAN 2 -->
+    <div class="page">
+        <div class="header-strip">Bagian 4: Bangun Benteng Keuangan (Lanjutan)</div>
+        <div class="content-area">
+            <h3>JENIS INVESTASI YANG COCOK UNTUK KREATOR:</h3>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0;">
+                <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; border-left: 4px solid var(--secondary);">
+                    <h5 style="margin: 0 0 10px 0; color: var(--primary);">📈 INVESTASI DI DIRI SENDIRI</h5>
+                    <ul style="font-size: 9pt; padding-left: 15px; margin: 0;">
+                        <li>Kursus editing/scripting (ROI: skill permanen)</li>
+                        <li>Beli alat yang ROI jelas (contoh: mic → kualitas audio ↑)</li>
+                        <li>Konsultasi ahli (channel audit, strategy)</li>
+                        <li>Buku & resources (pengetahuan)</li>
+                    </ul>
+                </div>
+                <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; border-left: 4px solid var(--secondary);">
+                    <h5 style="margin: 0 0 10px 0; color: var(--primary);">💰 INVESTASI FINANSIAL AMAN</h5>
+                    <ul style="font-size: 9pt; padding-left: 15px; margin: 0;">
+                        <li>Deposito (likuiditas tinggi, aman)</li>
+                        <li>Reksadana pasar uang (risiko rendah)</li>
+                        <li>Obligasi negara (aman, return stabil)</li>
+                        <li>Reksadana pendapatan tetap (untuk pemula)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box-warning" style="background: #ffebee; border-color: #f44336;">
+                <strong>🚫 HINDARI INI (UNTUK PEMULA/MENENGAH):</strong><br>
+                • Crypto/Forex trading (kecuali paham benar)<br>
+                • Saham individual tanpa riset mendalam<br>
+                • "Investasi" yang janji ROI tinggi cepat<br>
+                • MLM berkedok investasi<br>
+                • Pinjaman untuk investasi (JANGAN!)
+            </div>
+        </div>
+        <div class="footer-strip">23</div>
+    </div>
+
+    <!-- BAB 8 - HALAMAN 3 -->
+    <div class="page">
+        <div class="header-strip">Bagian 4: Bangun Benteng Keuangan (Lanjutan)</div>
+        <div class="content-area">
+            <h3>PRINSIP INVESTASI KREATOR BIJAK:</h3>
+            
+            <div style="background: #f0f9f5; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <h4 class="text-green">"RULE OF THUMB" INVESTASI KREATOR</h4>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+                    <div>
+                        <h5 style="color: var(--primary);">MAX 20% DARI INCOME</h5>
+                        <p style="font-size: 9pt;">Maksimal 20% dari income bersih untuk investasi finansial. Sisanya untuk hidup & bisnis.</p>
+                    </div>
+                    
+                    <div>
+                        <h5 style="color: var(--primary);">DIVERSIFIKASI</h5>
+                        <p style="font-size: 9pt;">Jangan taruh semua di 1 instrumen. Bagian ke beberapa jenis yang aman.</p>
+                    </div>
+                    
+                    <div>
+                        <h5 style="color: var(--primary);">LIKUIDITAS PENTING</h5>
+                        <p style="font-size: 9pt;">Sebagai kreator, kamu butuh uang cepat. Jangan kunci semua di investasi jangka panjang.</p>
+                    </div>
+                    
+                    <div>
+                        <h5 style="color: var(--primary);">PELAN TAPI PASTI</h5>
+                        <p style="font-size: 9pt;">Investasi kecil tapi konsisten > investasi besar sekali tapi berisiko.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>FORMULA SEDERHANA:</h3>
+            <div class="box-formula">
+                <p class="text-center" style="font-size: 12pt;">SETIAP Rp 1.000.000 INCOME BERSIH</p>
+                <div style="display: flex; justify-content: space-around; margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 14pt; color: #b5ffd0;">Rp 500.000</div>
+                        <div style="font-size: 8pt;">Hidup & Produksi</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 14pt; color: #b5ffd0;">Rp 300.000</div>
+                        <div style="font-size: 8pt;">Dana Darurat</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 14pt; color: #b5ffd0;">Rp 200.000</div>
+                        <div style="font-size: 8pt;">Investasi</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checklist-box">
+                <strong>CHECKLIST BAB 8:</strong>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya sudah memenuhi 3 prioritas sebelum investasi</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya fokus investasi di diri sendiri dulu</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya menghindari investasi berisiko tinggi</div>
+            </div>
+        </div>
+        <div class="footer-strip">24</div>
+    </div>
+
+    <!-- ==================== BAGIAN 5: NAIK LEVEL TANPA BANGKRUT ==================== -->
+
+    <!-- BAB 9 - HALAMAN 1 -->
+    <div class="page">
+        <div class="header-strip">Bagian 5: Naik Level Tanpa Bangkrut</div>
+        <div class="content-area">
+            <div class="chapter-start">
+                <div class="chapter-num">09</div>
+                <div class="chapter-pre">BAB SEMBILAN</div>
+                <h1 class="chapter-main-title">NAIK INCOME TANPA<br> NAIK GAYA HIDUP</h1>
+                <div class="chapter-sub">Strategi Scaling yang Tidak Membuatmu Bangkrut</div>
+            </div>
+
+            <p class="drop-cap">Ini adalah jebakan paling berbahaya: income naik 2x, gaya hidup naik 3x. Hasilnya? Lebih stress dari sebelumnya.</p>
+
+            <h3>KESALAHAN FATAL SAAT INCOME NAIK:</h3>
+            <div class="box-warning">
+                <ol>
+                    <li><strong>Merasa "kaya" dulu</strong> padahal income belum stabil</li>
+                    <li><strong>Beli gear mahal</strong> tanpa hitung ROI</li>
+                    <li><strong>Rekrut tim</strong> tanpa sistem yang jelas</li>
+                    <li><strong>Naikkan gaya hidup permanen</strong> berdasarkan income temporer</li>
+                    <li><strong>Pindah rumah/kontrakan</strong> lebih mahal tanpa perhitungan</li>
+                </ol>
+            </div>
+
+            <h3>FORMULA NAIK LEVEL YANG AMAN:</h3>
+            <div class="box-formula">
+                <h4 class="text-center" style="color: #b5ffd0;">DELAY GRATIFICATION STRATEGY</h4>
+                <p class="text-center">Income baru bertahan <strong>6 bulan konsisten</strong> → baru boleh naikkan gaya hidup <strong>maksimal 30%</strong> dari kenaikan income.</p>
+                <hr style="border-color: #555;">
+                <p style="font-size: 9pt;">Contoh: Income naik dari 5jt ke 10jt. Tunggu 6 bulan konsisten di 10jt. Naikkan gaya hidup maksimal 1,5jt (30% dari 5jt kenaikan). Sisa 3,5jt invest/tabung.</p>
+            </div>
+
+            <p style="font-size: 10pt; color: #666; margin-top: 20px;"><i>Lanjutan checklist & strategi tim di halaman berikut...</i></p>
+        </div>
+        <div class="footer-strip">25</div>
+    </div>
+
+    <!-- BAB 9 - HALAMAN 2 -->
+    <div class="page">
+        <div class="header-strip">Bagian 5: Naik Level Tanpa Bangkrut (Lanjutan)</div>
+        <div class="content-area">
+            <h3>CHECKLIST SEBELUM BELI GEAR BARU:</h3>
+            <div class="checklist-box">
+                <div class="checklist-item"><i class="far fa-square"></i> ROI jelas? (Contoh: beli mic 2jt → bisa naikin income 500rb/bulan = ROI 4 bulan)</div>
+                <div class="checklist-item"><i class="far fa-square"></i> Dana darurat masih utuh?</div>
+                <div class="checklist-item"><i class="far fa-square"></i> Income stabil 3 bulan terakhir?</div>
+                <div class="checklist-item"><i class="far fa-square"></i> Beli cash atau cicilan? (Hindari cicilan kecuali ROI < 6 bulan)</div>
+                <div class="checklist-item"><i class="far fa-square"></i> Ada alternatif lebih murah dengan fungsi sama?</div>
+                <div class="checklist-item"><i class="far fa-square"></i> Apakah ini kebutuhan atau keinginan?</div>
+            </div>
+
+            <h3 class="mt-4">STRATEGI REKRUT TIM PERTAMA:</h3>
+            <div style="background: #f0f7ff; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <h4 class="text-green">START SMALL, TEST FIRST</h4>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h5 style="color: var(--primary);">TAHAP 1: FREELANCE PROJECT-BASED</h5>
+                        <p style="font-size: 9pt;">Outsourcing 1 tugas spesifik (editing/thumbnail). Bayar per project, bukan bulanan. Test 3 project dulu.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h5 style="color: var(--primary);">TAHAP 2: PART-TIME REGULER</h5>
+                        <p style="font-size: 9pt;">Jika freelance berjalan 3 bulan, consider hire part-time. Income harus 3x dari gaji yang dibayar.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <h5 style="color: var(--primary);">TAHAP 3: FULL-TIME</h5>
+                        <p style="font-size: 9pt;">Hanya jika income stabil 6 bulan dan cukup untuk gaji tim + hidupmu + profit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-strip">26</div>
+    </div>
+
+    <!-- BAB 9 - HALAMAN 3 -->
+    <div class="page">
+        <div class="header-strip">Bagian 5: Naik Level Tanpa Bangkrut (Lanjutan)</div>
+        <div class="content-area">
+            <h3>TUGAS YANG BISA DIOUTSOURCE PERTAMA:</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+                <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                    <h5 style="color: var(--primary);">HIGH IMPACT, LOW EFFORT</h5>
+                    <ul style="font-size: 9pt; padding-left: 15px;">
+                        <li>Thumbnail design</li>
+                        <li>Video editing (basic cut)</li>
+                        <li>Caption & description</li>
+                        <li>Keyword research</li>
+                    </ul>
+                </div>
+                
+                <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                    <h5 style="color: var(--primary);">KEEP IN-HOUSE</h5>
+                    <ul style="font-size: 9pt; padding-left: 15px;">
+                        <li>Script writing (suaramu)</li>
+                        <li>Recording (personality)</li>
+                        <li>Strategy & planning</li>
+                        <li>Brand partnership</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box-success">
+                <strong>🎯 NAIK LEVEL ITU SOAL KONTROL, BUKAN PAMER</strong><br>
+                Kreator yang bertahan adalah yang punya:<br>
+                • Sistem sebelum scaling<br>
+                • Dana darurat sebelum gaya hidup<br>
+                • Tim kecil yang efektif sebelum tim besar<br>
+                • Profit yang aman sebelum ekspansi
+            </div>
+
+            <h3 class="mt-4">ATURAN 6 BULAN:</h3>
+            <p><strong>"Setiap kenaikan income signifikan, tunggu 6 bulan sebelum membuat keputusan finansial besar."</strong></p>
+            <p style="font-size: 10pt;">6 bulan cukup untuk membuktikan apakah income baru itu stabil atau hanya sementara.</p>
+
+            <div class="checklist-box">
+                <strong>CHECKLIST BAB 9:</strong>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya tidak langsung naikkan gaya hidup saat income naik</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya punya checklist sebelum beli gear/alat baru</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya paham strategi rekrut tim yang aman</div>
+            </div>
+        </div>
+        <div class="footer-strip">27</div>
+    </div>
+
+    <!-- BAB 10 - HALAMAN 1 -->
+    <div class="page">
+        <div class="header-strip">Bagian 5: Naik Level Tanpa Bangkrut</div>
+        <div class="content-area">
+            <div class="chapter-start">
+                <div class="chapter-num">10</div>
+                <div class="chapter-pre">BAB SEPULUH</div>
+                <h1 class="chapter-main-title">YOUTUBE SEBAGAI<br> ASET JANGKA PANJANG</h1>
+                <div class="chapter-sub">Membangun Warisan, Bukan Cuma Penghasilan</div>
+            </div>
+
+            <p class="drop-cap">YouTube bukan cuma penghasilan bulanan. YouTube adalah <strong>mesin traffic</strong> yang bisa jadi aset bernilai puluhan/h ratusan juta jika dikelola dengan benar.</p>
+
+            <h3 class="text-green mt-4">TRANSFORMASI MINDSET:</h3>
+            <div style="display: flex; gap: 20px; margin: 20px 0;">
+                <div style="flex: 1; background: #ffebee; padding: 15px; border-radius: 8px;">
+                    <h5 style="color: #d32f2f;">MINDSET LAMA</h5>
+                    <ul style="font-size: 10pt;">
+                        <li>Fokus pada views bulan ini</li>
+                        <li>Income = Adsense saja</li>
+                        <li>Channel = sumber uang</li>
+                        <li>Takut algoritma berubah</li>
+                        <li>Burnout karena pressure</li>
+                    </ul>
+                </div>
+                <div style="flex: 1; background: #e8f5e9; padding: 15px; border-radius: 8px;">
+                    <h5 style="color: #388e3c;">MINDSET BARU</h5>
+                    <ul style="font-size: 10pt;">
+                        <li>Fokus pada asset building</li>
+                        <li>Income = multiple streams</li>
+                        <li>Channel = traffic machine</li>
+                        <li>Siap dengan perubahan</li>
+                        <li>Tenang karena punya sistem</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>BANGUN MULTIPLE INCOME ENGINE:</h3>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0;">
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; text-align: center;">
+                    <div style="width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">1</div>
+                    <h5 style="margin: 0;">PASSIVE INCOME</h5>
+                    <p style="font-size: 9pt;">Adsense, affiliate evergreen</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; text-align: center;">
+                    <div style="width: 40px; height: 40px; background: var(--secondary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">2</div>
+                    <h5 style="margin: 0;">ACTIVE INCOME</h5>
+                    <p style="font-size: 9pt;">Brand deal, jasa, coaching</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; text-align: center;">
+                    <div style="width: 40px; height: 40px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">3</div>
+                    <h5 style="margin: 0;">PRODUCT INCOME</h5>
+                    <p style="font-size: 9pt;">Ebook, course, template</p>
+                </div>
+            </div>
+
+            <p style="font-size: 10pt; color: #666; margin-top: 20px;"><i>Lanjutan roadmap 5 tahun di halaman berikut...</i></p>
+        </div>
+        <div class="footer-strip">28</div>
+    </div>
+
+    <!-- BAB 10 - HALAMAN 2 -->
+    <div class="page">
+        <div class="header-strip">Bagian 5: Naik Level Tanpa Bangkrut (Lanjutan)</div>
+        <div class="content-area">
+            <h3>ROADMAP 5 TAHUN:</h3>
+            <div style="background: linear-gradient(to right, #e3f2fd, #bbdefb); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <h4 class="text-green">VISI KREATOR VERSI 5 TAHUN KE DEPAN</h4>
+                <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                    <div style="text-align: center; flex: 1; padding: 10px;">
+                        <div style="width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: bold;">1-2</div>
+                        <h5>TAHUN 1-2</h5>
+                        <p style="font-size: 8pt;">Bangun sistem keuangan dasar<br>Stabilkan income 1 sumber utama<br>Fokus: Bertahan & konsisten</p>
+                    </div>
+                    <div style="text-align: center; flex: 1; padding: 10px;">
+                        <div style="width: 50px; height: 50px; background: var(--secondary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: bold;">3-4</div>
+                        <h5>TAHUN 3-4</h5>
+                        <p style="font-size: 8pt;">Diversifikasi income stream<br>Bangun produk digital pertama<br>Fokus: Scaling & sistem</p>
+                    </div>
+                    <div style="text-align: center; flex: 1; padding: 10px;">
+                        <div style="width: 50px; height: 50px; background: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-weight: bold;">5+</div>
+                        <h5>TAHUN 5+</h5>
+                        <p style="font-size: 8pt;">Sistem berjalan otomatis<br>Income dari berbagai sumber<br>Fokus: Freedom & impact</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>ACTION PLAN: MULAI HARI INI</h3>
+            <ol>
+                <li><strong>Identifikasi 1 skill monetization</strong> yang ingin dikembangkan (affiliate/brand deal/produk)</li>
+                <li><strong>Alokasikan 5% income bulan ini</strong> untuk belajar/membangun income stream baru</li>
+                <li><strong>Buat konten pilot project</strong> dalam 30 hari ke depan</li>
+                <li><strong>Review & iterate</strong> setiap 3 bulan</li>
+                <li><strong>Scale apa yang bekerja</strong>, drop apa yang tidak</li>
+            </ol>
+        </div>
+        <div class="footer-strip">29</div>
+    </div>
+
+    <!-- BAB 10 - HALAMAN 3 -->
+    <div class="page">
+        <div class="header-strip">Bagian 5: Naik Level Tanpa Bangkrut (Lanjutan)</div>
+        <div class="content-area">
+            <h3>NILAI CHANNELMU SEBAGAI ASET:</h3>
+            
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <h5 class="text-green">METRIK ASET (BUKAN CUMA VIEWS)</h5>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+                    <div>
+                        <strong>Audience Loyalty</strong>
+                        <p style="font-size: 9pt;">Retention rate, comments quality, community engagement</p>
+                    </div>
+                    
+                    <div>
+                        <strong>Content Library</strong>
+                        <p style="font-size: 9pt;">Jumlah video evergreen, watch hours, back catalog value</p>
+                    </div>
+                    
+                    <div>
+                        <strong>Brand Equity</strong>
+                        <p style="font-size: 9pt;">Nama channel di niche, recognition, authority</p>
+                    </div>
+                    
+                    <div>
+                        <strong>Systems Built</strong>
+                        <p style="font-size: 9pt;">Workflow, team (jika ada), processes, monetization systems</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-formula" style="background: #f0f2f5; color: #333;">
+                <h4 class="text-center text-green">SUCCESS FORMULA FOR CREATOR</h4>
+                <p class="text-center" style="font-size: 12pt;">(Konsistensi Konten × Sistem Keuangan) + Multiple Income Streams</p>
+                <p class="text-center" style="font-size: 10pt;">= Kreator yang Bertahan & Berkembang Jangka Panjang</p>
+            </div>
+
+            <h3 class="mt-4">FINAL REFLECTION:</h3>
+            <p>Setelah membaca 10 bab ini, tanyakan pada dirimu:</p>
+            <ol>
+                <li>Apakah channelmu hanya untuk income bulanan, atau sebagai aset jangka panjang?</li>
+                <li>Sudahkah kamu membangun sistem keuangan yang membuatmu tenang?</li>
+                <li>Apa satu action yang akan kamu ambil besok untuk mulai membangun "warisan digital"?</li>
+            </ol>
+
+            <div class="checklist-box">
+                <strong>CHECKLIST BAB 10:</strong>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya punya visi untuk channel 5 tahun ke depan</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya mulai memikirkan multiple income stream</div>
+                <div class="checklist-item"><i class="fas fa-check-circle"></i> Saya melihat YouTube sebagai aset, bukan cuma penghasilan</div>
+            </div>
+        </div>
+        <div class="footer-strip">30</div>
+    </div>
+
+    <!-- ==================== BONUS EKSKLUSIF ==================== -->
+
+    <!-- BONUS HALAMAN 1 -->
+    <div class="page page-dark">
+        <div class="header-strip">Bonus Eksklusif</div>
+        <div class="content-area">
+            <h1 style="color: var(--primary);">BONUS TEMPLATE & CHECKLIST</h1>
+            
+            <h3 class="mt-4" style="color: white;">BONUS 1: Template Cashflow Kreator (Google Sheets)</h3>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                <p><strong>Link Template:</strong> bit.ly/cashflow-creator-system</p>
+                <p style="font-size: 9pt; color: #aaa;">• Auto-calculate income dari berbagai sumber<br>• Visual chart pemasukan vs pengeluaran<br>• Track progress dana darurat<br>• Reminder bayar pajak<br>• Projection 6 bulan ke depan</p>
+            </div>
+
+            <h3 style="color: white;">BONUS 2: Checklist "Ambil Gaji Kreator"</h3>
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                <div class="checklist-item"><i class="far fa-square"></i> Dana darurat masih utuh? (✅/❌)</div>
+                <div class="checklist-item"><i class="far fa-square"></i> Pajak bulan ini sudah disisihkan? (✅/❌)</div>
+                <div class="checklist-item"><i class="far fa-square"></i> Biaya produksi bulan depan sudah disiapkan? (✅/❌)</div>
+                <div class="checklist-item"><i class="far fa-square"></i> Income stabil 3 bulan terakhir? (✅/❌)</div>
+                <div class="checklist-item"><i class="far fa-square"></i> Sudah hitung dengan formula 50/30/20? (✅/❌)</div>
+                <div class="checklist-item"><i class="far fa-square"></i> Tidak ada tagihan penting yang tertunda? (✅/❌)</div>
+            </div>
+        </div>
+        <div class="footer-strip">31</div>
+    </div>
+
+    <!-- BONUS HALAMAN 2 -->
+    <div class="page page-dark">
+        <div class="header-strip">Bonus Eksklusif</div>
+        <div class="content-area">
+            <h3 style="color: var(--primary);">BONUS 3: Budget Produksi Hemat vs Scale</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div style="background: #222; padding: 15px; border-radius: 5px;">
+                    <h5 style="color: var(--secondary);">MODEL HEMAT</h5>
+                    <p style="font-size: 9pt; color: #ccc;">
+                        • Smartphone + mic ringan (Rp 300rb)<br>
+                        • Editing: CapCut gratis<br>
+                        • Thumbnail: Canva free<br>
+                        • Musik: YouTube Audio Library<br>
+                        • Lighting: Natural light + lampu belajar<br>
+                        • <strong>Budget: < 500rb/bulan</strong>
+                    </p>
+                </div>
+                <div style="background: #222; padding: 15px; border-radius: 5px;">
+                    <h5 style="color: var(--primary);">MODEL SCALE</h5>
+                    <p style="font-size: 9pt; color: #ccc;">
+                        • Kamera mirrorless + lighting (Rp 10-20jt)<br>
+                        • Editing: Premiere Pro (Rp 300rb/tahun)<br>
+                        • Thumbnail: Photoshop + designer<br>
+                        • Musik: Epidemic Sound (Rp 300rb/bulan)<br>
+                        • Team: Editor part-time (Rp 1-2jt/video)<br>
+                        • <strong>Budget: 2-5jt/bulan</strong>
+                    </p>
+                </div>
+            </div>
+
+            <h3 style="color: white; margin-top: 30px;">BONUS 4: 7 Template Konten Darurat</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+                <div style="background: #333; padding: 10px; border-radius: 5px;">
+                    <strong>1. REAKSI KOMENTAR</strong><br>
+                    <span style="font-size: 8pt; color: #aaa;">"Kalian nanya [A]? Ini jawabannya..."</span>
+                </div>
+                <div style="background: #333; padding: 10px; border-radius: 5px;">
+                    <strong>2. MICRO-TIP</strong><br>
+                    <span style="font-size: 8pt; color: #aaa;">"Tips cepat: [tips] → Hasilnya [hasil]"</span>
+                </div>
+                <div style="background: #333; padding: 10px; border-radius: 5px;">
+                    <strong>3. BTS PROSES</strong><br>
+                    <span style="font-size: 8pt; color: #aaa;">"Beginilah cara saya [proses]..."</span>
+                </div>
+                <div style="background: #333; padding: 10px; border-radius: 5px;">
+                    <strong>4. HIGHLIGHT LAMA</strong><br>
+                    <span style="font-size: 8pt; color: #aaa;">"Dari video [judul], ini poin terpenting..."</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-strip">32</div>
+    </div>
+
+    <!-- BONUS HALAMAN 3 -->
+    <div class="page page-dark">
+        <div class="header-strip">Bonus Eksklusif</div>
+        <div class="content-area">
+            <h3 style="color: var(--primary);">BONUS 5: Simulasi Pembagian Uang per Level</h3>
+            
+            <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                <h5 style="color: white;">LEVEL 1: INCOME 3 JUTA</h5>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 70%"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 9pt; margin-top: 5px;">
+                    <span>Hidup: 2,1jt (70%)</span>
+                    <span>Produksi: 600rb (20%)</span>
+                    <span>Aman: 300rb (10%)</span>
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                <h5 style="color: white;">LEVEL 2: INCOME 7 JUTA</h5>
+                <div style="display: flex; height: 20px; margin: 10px 0;">
+                    <div style="flex: 50; background: var(--primary);"></div>
+                    <div style="flex: 30; background: var(--secondary);"></div>
+                    <div style="flex: 20; background: var(--accent);"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 9pt;">
+                    <span>Gaji: 3,5jt (50%)</span>
+                    <span>Reinvest: 2,1jt (30%)</span>
+                    <span>Tabungan: 1,4jt (20%)</span>
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 5px;">
+                <h5 style="color: white;">LEVEL 3: INCOME 15 JUTA+</h5>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 11pt; color: var(--primary);">5JT</div>
+                        <div style="font-size: 8pt;">Gaji Tetap</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 11pt; color: var(--secondary);">5JT</div>
+                        <div style="font-size: 8pt;">Reinvest & Tim</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 11pt; color: var(--accent);">5JT</div>
+                        <div style="font-size: 8pt;">Investasi & Aset</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-strip">33</div>
+    </div>
+
+    <!-- BONUS HALAMAN 4 -->
+    <div class="page page-dark">
+        <div class="header-strip">Bonus Eksklusif</div>
+        <div class="content-area">
+            <h2 style="color:white;">30-DAY ACTION PLAN</h2>
+            
+            <div class="timeline" style="margin-top: 20px;">
+                <div class="timeline-item">
+                    <h5 style="color: #b5ffd0;">MINGGU 1: FOUNDATION</h5>
+                    <p style="font-size: 9pt; color: #ccc;">
+                        • Audit keuangan 30 hari terakhir<br>
+                        • Buka rekening baru (minimal 2)<br>
+                        • Hitung biaya hidup real<br>
+                        • Tentukan level sistem
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h5 style="color: #b5ffd0;">MINGGU 2: SYSTEM SETUP</h5>
+                    <p style="font-size: 9pt; color: #ccc;">
+                        • Terapkan sistem gaji kreator<br>
+                        • Setup auto-transfer<br>
+                        • Hitung target dana darurat<br>
+                        • Buat spreadsheet tracking
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h5 style="color: #b5ffd0;">MINGGU 3: MONETIZATION</h5>
+                    <p style="font-size: 9pt; color: #ccc;">
+                        • Review formula brand deal<br>
+                        • Setup sistem invoice<br>
+                        • Buat emergency kit konten<br>
+                        • Riset 1 income stream baru
+                    </p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h5 style="color: #b5ffd0;">MINGGU 4: OPTIMIZATION</h5>
+                    <p style="font-size: 9pt; color: #ccc;">
+                        • Review sistem 30 hari<br>
+                        • Adjust yang perlu diadjust<br>
+                        • Buat roadmap 6 bulan<br>
+                        • Commit untuk konsisten
+                    </p>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; border-top: 1px solid #444; padding-top: 20px;">
+                 <h3 style="color:white;">QUARTERLY REVIEW CHECKLIST</h3>
+                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+                     <div style="font-size: 9pt; color: #ccc;">
+                         <strong>SETIAP 3 BULAN:</strong><br>
+                         • Dana darurat progress?<br>
+                         • Income stream beragam?<br>
+                         • Sistem masih bekerja?<br>
+                         • Perlu adjustment?
+                     </div>
+                     <div style="font-size: 9pt; color: #ccc;">
+                         <strong>SETIAP 6 BULAN:</strong><br>
+                         • Naik level sistem?<br>
+                         • ROI dari investasi?<br>
+                         • Gaya hidup check?<br>
+                         • Roadmap update?
+                     </div>
+                 </div>
+            </div>
+        </div>
+        <div class="footer-strip">34</div>
+    </div>
+
+    <!-- BONUS HALAMAN 5 -->
+    <div class="page">
+        <div class="header-strip">Bonus: Journal & Tracking</div>
+        <div class="content-area">
+            <h1 class="chapter-main-title">JOURNAL KEUANGAN KREATOR</h1>
+            
+            <div style="border: 2px dashed #ccc; padding: 20px; height: 400px; margin-top: 20px;">
+                <h4 style="margin-bottom: 20px;">BULAN: ___________  TAHUN: ___________</h4>
+                
+                <p><strong>Income Total:</strong> Rp ________________</p>
+                <p><strong>Gaji yang Saya Ambil:</strong> Rp ________________</p>
+                <p><strong>Dana Darurat Bertambah:</strong> Rp ________________ (Total: Rp ________________)</p>
+                <p><strong>Investasi/Upgrade:</strong> Rp ________________ (ROI: ________________)</p>
+                
+                <p style="margin-top: 20px;"><strong>Pelajaran Finansial Terbesar Bulan Ini:</strong></p>
+                <div style="border-bottom: 1px solid #ddd; height: 40px; margin-bottom: 10px;"></div>
+                <div style="border-bottom: 1px solid #ddd; height: 40px; margin-bottom: 10px;"></div>
+                
+                <p style="margin-top: 20px;"><strong>Aksi Perbaikan Bulan Depan:</strong></p>
+                <div style="border-bottom: 1px solid #ddd; height: 40px; margin-bottom: 10px;"></div>
+                <div style="border-bottom: 1px solid #ddd; height: 40px; margin-bottom: 10px;"></div>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <h4 class="text-green">TRACKING TEMPLATE:</h4>
+                <table style="width: 100%; font-size: 9pt;">
+                    <tr>
+                        <th>Bulan</th>
+                        <th>Income</th>
+                        <th>Gaji</th>
+                        <th>Dana Darurat</th>
+                        <th>Investasi</th>
+                    </tr>
+                    <tr>
+                        <td>Jan</td>
+                        <td>Rp ______</td>
+                        <td>Rp ______</td>
+                        <td>Rp ______</td>
+                        <td>Rp ______</td>
+                    </tr>
+                    <tr>
+                        <td>Feb</td>
+                        <td>Rp ______</td>
+                        <td>Rp ______</td>
+                        <td>Rp ______</td>
+                        <td>Rp ______</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="footer-strip">35</div>
+    </div>
+
+    <!-- BONUS HALAMAN 6 -->
+    <div class="page">
+        <div class="header-strip">Resources & Next Steps</div>
+        <div class="content-area">
+            <h1 class="chapter-main-title">SUMBER DAYA & LANGKAH SELANJUTNYA</h1>
+            
+            <div style="background: var(--primary-light); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <h4 class="text-green">📚 REKOMENDASI BUKU & KURSUS:</h4>
+                <ul style="font-size: 10pt;">
+                    <li><strong>Keuangan Pribadi:</strong> "Financial Freedom" oleh Grant Sabatier</li>
+                    <li><strong>Mindset Bisnis:</strong> "The Millionaire Fastlane" oleh MJ DeMarco</li>
+                    <li><strong>YouTube Growth:</strong> Kursus oleh Channel yang sudah proven</li>
+                    <li><strong>Investasi Dasar:</strong> "The Simple Path to Wealth" oleh JL Collins</li>
+                </ul>
+            </div>
+
+            <div style="background: #fff8e6; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <h4 class="text-green">🛠️ TOOLS & APLIKASI:</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px;">
+                    <div>
+                        <strong>Tracking Keuangan:</strong>
+                        <ul style="font-size: 9pt; padding-left: 15px;">
+                            <li>Google Sheets (gratis)</li>
+                            <li>Wallet by BudgetBakers</li>
+                            <li>Money Lover</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>Investasi Pemula:</strong>
+                        <ul style="font-size: 9pt; padding-left: 15px;">
+                            <li>Bibit (reksadana)</li>
+                            <li>Pluang (emas & saham)</li>
+                            <li>Bareksa</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #e6f7ff; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                <h4 class="text-green">📞 KONTAK & KOMUNITAS:</h4>
+                <p style="font-size: 10pt;">
+                    <strong>Template Update:</strong> tuanbay.id/creator-money-system<br>
+                    <strong>Email:</strong> hello@tuanbay.id<br>
+                    <strong>Instagram:</strong> @tuan.bay<br>
+                    <strong>Komunitas:</strong> Telegram Group (link di website)
+                </p>
+            </div>
+
+            <div style="margin-top: 40px; text-align: center;">
+                <h4 class="text-green">JANGAN BERHENTI DI SINI</h4>
+                <p>Buku ini hanyalah awal. Implementasi adalah kunci. Review sistemmu setiap 3 bulan, adjust sesuai perkembangan, dan terus belajar.</p>
+            </div>
+        </div>
+        <div class="footer-strip">36</div>
+    </div>
+
+    <!-- ==================== HALAMAN PENUTUP ==================== -->
+    <div class="page">
+        <div class="content-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+            <h1 style="font-family: var(--font-title); font-size: 3rem; margin-bottom: 20px;">PENUTUP</h1>
+            
+            <div style="width: 80%; margin: 0 auto;">
+                <p style="font-size: 13pt;">
+                    <strong>View bisa naik turun. Algoritma bisa berubah. Trend akan berganti.</strong>
+                </p>
+                <p style="font-size: 13pt;">
+                    Tapi kreator yang punya sistem keuangan yang sehat akan selalu punya pilihan. Mereka lebih tenang, lebih panjang umur, dan lebih siap menghadapi perubahan apa pun.
+                </p>
+                <p style="font-size: 13pt;">
+                    Sistem dalam buku ini hanyalah alat. Kamu yang menentukan seberapa besar dampaknya untuk karir kreatormu.
+                </p>
+            </div>
+
+            <div style="margin-top: 3cm; padding: 20px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; width: 70%;">
+                <h3 style="font-family: var(--font-head); color: var(--primary);">
+                    TERUS BERKARYA.<br>
+                    KELOLA UANGMU.<br>
+                    BERTAHAN LEBIH LAMA DARI YANG LAIN.
+                </h3>
+            </div>
+
+            <div style="margin-top: 3cm;">
+                <h2 style="font-family: var(--font-head);">TUAN BAY</h2>
+                <p style="font-size: 10pt; color: #888;">© 2026 Tuan Bay — Hak Cipta Dilindungi Undang-Undang</p>
+                <p style="font-size: 9pt;">contact@tuanbay</p>
+                <p style="font-size: 8pt; color: #aaa; margin-top: 10px;">Dilarang memperbanyak, menyalin, atau mendistribusikan tanpa izin tertulis dari penulis.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
